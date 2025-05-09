@@ -128,7 +128,7 @@
     "# Download resource data\n",
     "#Read in weather data from SAM, or use NSRDB downloads in SAM format, or use dictionary of solar data\n",
     "#A. You already have a file\n",
-    "weather_file = \"data/CA_weather_data.csv\"\n",
+    "weather_file = \"data/weather_file.csv\"\n",
     "pv_model.SolarResource.solar_resource_file = weather_file\n",
     "\n",
     "#B. solar_resource_data\n",
