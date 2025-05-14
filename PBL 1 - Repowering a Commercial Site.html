@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>C&amp;I Case Study &#8212; 2025 PVPMC PV Repowering Tutorial</title>
+    <title>PBL 1 - Repowering a Commercial Site &#8212; 2025 PVPMC PV Repowering Tutorial</title>
   
   
   
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'PBL 1 - Repowering a Commercial Site';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Residential Repowering Scenario" href="PBL%202%20-%20Residential%20Repower.html" />
+    <link rel="next" title="PBL 2 - Residential Repower" href="PBL%202%20-%20Residential%20Repower.html" />
     <link rel="prev" title="Welcome to Repowering Tutorial" href="Overview.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -171,18 +171,10 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">C&amp;I Case Study</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="PBL%202%20-%20Residential%20Repower.html">Residential Repowering Scenario</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="PBL%203%20-%202nd%20Life%20Resi.html">Residential Repowering Scenario</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="PBL%204%20-%202nd%20Life%20Owner%20School.html">Second Life Owner School Case Study</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">PBL 1 - Repowering a Commercial Site</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PBL%202%20-%20Residential%20Repower.html">PBL 2 - Residential Repower</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PBL%203%20-%202nd%20Life%20Resi.html">PBL 3 - 2nd Life Resi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PBL%204%20-%202nd%20Life%20Owner%20School.html">PBL 4 - 2nd Life Owner School</a></li>
 </ul>
 
     </div>
@@ -414,7 +406,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>C&I Case Study</h1>
+    <h1>PBL 1 - Repowering a Commercial Site</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -424,13 +416,24 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">C&amp;I Case Study</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#system-info-decommissioning-case">System Info: Decommissioning case</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#system-info-reinstall-case">System Info: Reinstall case</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#system-info-repower-scrap-case">System Info: Repower + scrap case</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#system-info-repower-resell-case">System Info: Repower + resell case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-imports">0. Python Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-base-case">1. Set up base case</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-sam-json-files">Load SAM Json files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-resource-data">Download resource data</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrics-for-evaluation">Metrics for evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-info-decommissioning-case">System Info: Decommissioning Case</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-decommissioning-cost">Calculate Decommissioning Cost</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-recycling-cost">Calculate Recycling Cost</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-decomissioning-and-recycling-costs-to-npv-and-update-payback-period">Assign Decomissioning and Recycling costs to NPV and update Payback Period</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-reinstall-case">2. Setup Reinstall case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-repower-scrap-case">3. Setup Repower + scrap case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-repower-resell-case">4. Setup Repower + resell case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-cases">Comparison of Cases</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -441,7 +444,20 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="pbl-1-repowering-a-commercial-site">
+<h1>PBL 1 - Repowering a Commercial Site<a class="headerlink" href="#pbl-1-repowering-a-commercial-site" title="Link to this heading">#</a></h1>
+<p>A commercial building owner seeking advice on what to do with their PV systems as their rooftop ages: decommissioning the system, reinstalling the current setup after roof maintenance, or repowering with newer, more efficient technology</p>
+<section id="python-imports">
+<h2>0. Python Imports<a class="headerlink" href="#python-imports" title="Link to this heading">#</a></h2>
+<p>If running on google colab, uncomment (remove the # sign) from the next cell and execute it to install the dependencies and prevent “ModuleNotFoundError” in later cells.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install -r https://raw.githubusercontent.com/PV-Tutorials/2025_PVPMC_PV_Repowering/main/requirements.txt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Imports</span>
 <span class="kn">import</span> <span class="nn">PySAM</span>
@@ -483,13 +499,14 @@ PV_ICE version  0.4.3
 </div>
 </div>
 </div>
-<section id="c-i-case-study">
-<h1>C&amp;I Case Study<a class="headerlink" href="#c-i-case-study" title="Link to this heading">#</a></h1>
-<p>A commercial building owner seeking advice on what to do with their PV systems as their rooftop ages: decommissioning the system, reinstalling the current setup after roof maintenance, or repowering with newer, more efficient technology</p>
+</section>
+<section id="set-up-base-case">
+<h2>1. Set up base case<a class="headerlink" href="#set-up-base-case" title="Link to this heading">#</a></h2>
+<section id="load-sam-json-files">
+<h3>Load SAM Json files<a class="headerlink" href="#load-sam-json-files" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up base case</span>
-<span class="n">pv_model</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="s2">&quot;FlatPlatePVCommercial&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pv_model</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="s2">&quot;FlatPlatePVCommercial&quot;</span><span class="p">)</span>
 <span class="n">ur_model</span> <span class="o">=</span> <span class="n">ur</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
 <span class="n">grid_model</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
 <span class="n">fin_model</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
@@ -523,10 +540,12 @@ PV_ICE version  0.4.3
 </div>
 </div>
 </div>
+</section>
+<section id="download-resource-data">
+<h3>Download resource data<a class="headerlink" href="#download-resource-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download resource data</span>
-<span class="c1">#Read in weather data from SAM, or use NSRDB downloads in SAM format, or use dictionary of solar data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read in weather data from SAM, or use NSRDB downloads in SAM format, or use dictionary of solar data</span>
 <span class="c1">#A. You already have a file</span>
 <span class="n">weather_file</span> <span class="o">=</span> <span class="s2">&quot;data/CA_weather_data.csv&quot;</span>
 <span class="n">pv_model</span><span class="o">.</span><span class="n">SolarResource</span><span class="o">.</span><span class="n">solar_resource_file</span> <span class="o">=</span> <span class="n">weather_file</span>
@@ -610,44 +629,99 @@ Getting list of available NSRDB files for 39.75, -105.22.
 </div>
 </div>
 </section>
+</section>
+<section id="metrics-for-evaluation">
+<h2>Metrics for evaluation<a class="headerlink" href="#metrics-for-evaluation" title="Link to this heading">#</a></h2>
+<p>We will save Net Present VAlue, and Payback Period for the four cases we’re modeling. We’re making a placeholder for that information in each run.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npv</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">payback_period</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="system-info-decommissioning-case">
-<h1>System Info: Decommissioning case<a class="headerlink" href="#system-info-decommissioning-case" title="Link to this heading">#</a></h1>
-<p>-Building Height: 1 story</p>
-<p>-Mounting Technology: Racking scrap metal salvage value</p>
-<p>-Module disposition: Recycle</p>
-<p>-Remaining system lifetime: 0 years</p>
-<p>-Costs: 25 cents/W</p>
-<p>-Labor/Other: 1 day labor for 120-150 modules with a team of 10, Insurance for roofer safety $230/person</p>
+<h2>System Info: Decommissioning Case<a class="headerlink" href="#system-info-decommissioning-case" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Building Height: 1 story</p></li>
+<li><p>Mounting Technology: Racking scrap metal salvage value</p></li>
+<li><p>Module disposition: Recycle</p></li>
+<li><p>Remaining system lifetime: 0 years</p></li>
+<li><p>Decommissioning Costs: 25 cents/W in CO; 10% premium in CA</p></li>
+<li><p>Recycling costs: $17.00 per module</p></li>
+<li><p>Labor/Other: 1 day labor for 120-150 modules with a team of 10, Insurance for roofer safety $230/person</p></li>
+</ul>
+<section id="calculate-decommissioning-cost">
+<h3>Calculate Decommissioning Cost<a class="headerlink" href="#calculate-decommissioning-cost" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A. Decommissioning case</span>
 <span class="n">decommissioning_cost</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="mf">1.10</span> <span class="c1">#cents/W, assumed 0.25 for Colorado increased by 10% to California</span>
 <span class="n">decommissioning_cost_total</span> <span class="o">=</span> <span class="n">decommissioning_cost</span> <span class="o">*</span> <span class="n">pv_model</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">system_capacity</span> <span class="o">*</span> <span class="mi">1000</span>
-
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-recycling-cost">
+<h3>Calculate Recycling Cost<a class="headerlink" href="#calculate-recycling-cost" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">16200</span><span class="o">/</span><span class="mi">950</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17.05263157894737
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recycling_per_module</span> <span class="o">=</span> <span class="mi">17</span>
 <span class="n">recycling_cost</span> <span class="o">=</span> <span class="mi">16200</span>
-<span class="c1">#No generation, no incentives</span>
-<span class="n">npv</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">payback_period</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="assign-decomissioning-and-recycling-costs-to-npv-and-update-payback-period">
+<h3>Assign Decomissioning and Recycling costs to NPV and update Payback Period<a class="headerlink" href="#assign-decomissioning-and-recycling-costs-to-npv-and-update-payback-period" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#No generation, no incentives</span>
 <span class="n">npv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">decommissioning_cost_total</span> <span class="o">+</span> <span class="n">recycling_cost</span><span class="p">))</span>
-<span class="c1">#There is no payback period</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In case 1 we are decomissioning, so there are costs with no revenue. Therefore those expenses never pay back.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#There is no payback period</span>
 <span class="n">payback_period</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="system-info-reinstall-case">
-<h1>System Info: Reinstall case<a class="headerlink" href="#system-info-reinstall-case" title="Link to this heading">#</a></h1>
-<p>-Building Height: 1 story</p>
-<p>-Mounting Technology: Keep racking</p>
-<p>-Module disposition: NA</p>
-<p>-Remaining system lifetime: 12 years (user sets)</p>
-<p>-Costs: 1.5x the decommissioning cost (estimated)</p>
-<p>-Labor/Other: NA</p>
+</section>
+<section id="setup-reinstall-case">
+<h2>2. Setup Reinstall case<a class="headerlink" href="#setup-reinstall-case" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Building Height: 1 story</p></li>
+<li><p>Mounting Technology: Keep racking</p></li>
+<li><p>Module disposition: NA</p></li>
+<li><p>Remaining system lifetime: 12 years (user sets)</p></li>
+<li><p>Costs: 1.5x the decommissioning cost (estimated)</p></li>
+<li><p>Labor/Other: NA</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># B. Reinstall case</span>
-<span class="n">reinstall_cost</span> <span class="o">=</span> <span class="mf">0.58</span> <span class="c1">#cents/W (modified by user)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reinstall_cost</span> <span class="o">=</span> <span class="mf">0.58</span> <span class="c1">#cents/W (modified by user)</span>
 <span class="n">reinstall_cost_total</span> <span class="o">=</span> <span class="n">reinstall_cost</span> <span class="o">*</span> <span class="n">pv_model</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">system_capacity</span> <span class="o">*</span> <span class="mi">1000</span>
 
 <span class="c1">#System specs stay the same</span>
@@ -674,8 +748,8 @@ Getting list of available NSRDB files for 39.75, -105.22.
 </div>
 </div>
 </section>
-<section id="system-info-repower-scrap-case">
-<h1>System Info: Repower + scrap case<a class="headerlink" href="#system-info-repower-scrap-case" title="Link to this heading">#</a></h1>
+<section id="setup-repower-scrap-case">
+<h2>3. Setup Repower + scrap case<a class="headerlink" href="#setup-repower-scrap-case" title="Link to this heading">#</a></h2>
 <p>-Building Height: 1 story</p>
 <p>-Mounting Technology: Keep racking</p>
 <p>-Module disposition: New module cost + Recycle</p>
@@ -721,8 +795,8 @@ Recycling: $10/panel</p>
 </div>
 </div>
 </section>
-<section id="system-info-repower-resell-case">
-<h1>System Info: Repower + resell case<a class="headerlink" href="#system-info-repower-resell-case" title="Link to this heading">#</a></h1>
+<section id="setup-repower-resell-case">
+<h2>4. Setup Repower + resell case<a class="headerlink" href="#setup-repower-resell-case" title="Link to this heading">#</a></h2>
 <p>-Building Height: 1 story</p>
 <p>-Mounting Technology: Keep racking</p>
 <p>-Module disposition: New module cost + Resell</p>
@@ -751,11 +825,13 @@ Resell: \$0.05-0.6/W (only if &gt;300W)</p>
 <span class="n">bill_savings</span> <span class="o">=</span> <span class="n">ur_model</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">savings_year1</span>
 <span class="n">npv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fin_model</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">npv</span><span class="p">)</span>
 <span class="n">payback_period</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fin_model</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">payback</span><span class="p">)</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Decommission&quot;</span><span class="p">,</span> <span class="s2">&quot;Reinstall&quot;</span><span class="p">,</span> <span class="s2">&quot;Repower + scrap&quot;</span><span class="p">,</span> <span class="s2">&quot;Repower + resell&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="comparison-of-cases">
+<h2>Comparison of Cases<a class="headerlink" href="#comparison-of-cases" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Graphing</span>
@@ -763,13 +839,13 @@ Resell: \$0.05-0.6/W (only if &gt;300W)</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">labels</span><span class="p">,</span> <span class="n">npv</span><span class="p">,</span> <span class="n">payback_period</span><span class="p">])</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Decommission&quot;</span><span class="p">,</span> <span class="s2">&quot;Reinstall&quot;</span><span class="p">,</span> <span class="s2">&quot;Repower + scrap&quot;</span><span class="p">,</span> <span class="s2">&quot;Repower + resell&quot;</span><span class="p">]</span>
 <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="s2">&quot;npv&quot;</span><span class="p">,</span> <span class="s2">&quot;payback&quot;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;npv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -794,6 +870,13 @@ Resell: \$0.05-0.6/W (only if &gt;300W)</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;npv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;payback&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -805,6 +888,7 @@ Resell: \$0.05-0.6/W (only if &gt;300W)</p>
 <img alt="_images/274f0788d8a646dba3438e1ac465d5f8dc606a91aa85c318671a4e98181a89db.png" src="_images/274f0788d8a646dba3438e1ac465d5f8dc606a91aa85c318671a4e98181a89db.png" />
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -851,7 +935,7 @@ Resell: \$0.05-0.6/W (only if &gt;300W)</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Residential Repowering Scenario</p>
+        <p class="prev-next-title">PBL 2 - Residential Repower</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -872,13 +956,24 @@ Resell: \$0.05-0.6/W (only if &gt;300W)</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">C&amp;I Case Study</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#system-info-decommissioning-case">System Info: Decommissioning case</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#system-info-reinstall-case">System Info: Reinstall case</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#system-info-repower-scrap-case">System Info: Repower + scrap case</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#system-info-repower-resell-case">System Info: Repower + resell case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-imports">0. Python Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-base-case">1. Set up base case</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-sam-json-files">Load SAM Json files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-resource-data">Download resource data</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrics-for-evaluation">Metrics for evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-info-decommissioning-case">System Info: Decommissioning Case</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-decommissioning-cost">Calculate Decommissioning Cost</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-recycling-cost">Calculate Recycling Cost</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-decomissioning-and-recycling-costs-to-npv-and-update-payback-period">Assign Decomissioning and Recycling costs to NPV and update Payback Period</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-reinstall-case">2. Setup Reinstall case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-repower-scrap-case">3. Setup Repower + scrap case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-repower-resell-case">4. Setup Repower + resell case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-cases">Comparison of Cases</a></li>
+</ul>
   </nav></div>
 
 </div></div>
