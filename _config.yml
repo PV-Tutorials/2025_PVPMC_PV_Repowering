@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: 2025 PVPMC PV Repowering Tutorial: Optimizing Repowering and Lifecycle Decisions with PV ICE and SAM
+title: 2025 PVPMC PV Repowering Tutorial
 author: Heather Mirletz, Silvana Ovaitt
 logo: images/tutorial_banner.PNG
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
