@@ -1,0 +1,1090 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Residential Repowering Scenario &#8212; 2025 PVPMC PV Repowering Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'PBL 2 - Residential Repower';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Residential Repowering Scenario" href="PBL%203%20-%202nd%20Life%20Resi.html" />
+    <link rel="prev" title="C&amp;I Case Study" href="PBL%201%20-%20Repowering%20a%20Commercial%20Site.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Overview.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/tutorial_banner.PNG" class="logo__image only-light" alt="2025 PVPMC PV Repowering Tutorial - Home"/>
+    <img src="_static/tutorial_banner.PNG" class="logo__image only-dark pst-js-only" alt="2025 PVPMC PV Repowering Tutorial - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Overview.html">
+                    Welcome to Repowering Tutorial
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="PBL%201%20-%20Repowering%20a%20Commercial%20Site.html">C&amp;I Case Study</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Residential Repowering Scenario</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="PBL%203%20-%202nd%20Life%20Resi.html">Residential Repowering Scenario</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="PBL%204%20-%202nd%20Life%20Owner%20School.html">Second Life Owner School Case Study</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/PV-Tutorials/2025_PVPMC_PV_Repowering/blob/main/PBL 2 - Residential Repower.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/PV-Tutorials/2025_PVPMC_PV_Repowering" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/PV-Tutorials/2025_PVPMC_PV_Repowering/issues/new?title=Issue%20on%20page%20%2FPBL 2 - Residential Repower.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/PBL 2 - Residential Repower.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Residential Repowering Scenario</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Residential Repowering Scenario</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-mode-known-new-system-capacity-unknown-remaining-lifetime-for-existing-system">Calculation Mode: Known new system capacity, unknown remaining lifetime for existing system</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-calculation-mode-unknown-new-system-capacity-known-remaining-lifetime-for-existing-system">Alternative calculation mode: Unknown new system capacity, known remaining lifetime for existing system</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Imports</span>
+<span class="kn">import</span> <span class="nn">PySAM</span>
+<span class="kn">import</span> <span class="nn">PV_ICE</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">PySAM</span> <span class="kn">import</span> <span class="n">Pvsamv1</span> <span class="k">as</span> <span class="n">pv</span>
+<span class="kn">from</span> <span class="nn">PySAM</span> <span class="kn">import</span> <span class="n">Pvwattsv8</span> <span class="k">as</span> <span class="n">pvwatts</span>
+<span class="kn">from</span> <span class="nn">PySAM</span> <span class="kn">import</span> <span class="n">Cashloan</span> <span class="k">as</span> <span class="n">res</span>
+<span class="kn">from</span> <span class="nn">PySAM</span> <span class="kn">import</span> <span class="n">Grid</span> <span class="k">as</span> <span class="n">grid</span>
+<span class="kn">from</span> <span class="nn">PySAM</span> <span class="kn">import</span> <span class="n">Utilityrate5</span> <span class="k">as</span> <span class="n">ur</span>
+<span class="kn">import</span> <span class="nn">PySAM.Pvsamv1Tools</span> <span class="k">as</span> <span class="nn">pvtools</span>
+<span class="kn">import</span> <span class="nn">PySAM.ResourceTools</span> <span class="k">as</span> <span class="nn">tools</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This information helps with debugging and getting support :)</span>
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">platform</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Working on a &quot;</span><span class="p">,</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">(),</span> <span class="n">platform</span><span class="o">.</span><span class="n">release</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python version &quot;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pandas version &quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PySAM version &quot;</span><span class="p">,</span> <span class="n">PySAM</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PV_ICE version &quot;</span><span class="p">,</span> <span class="n">PV_ICE</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Working on a  Windows 11
+Python version  3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]
+Pandas version  2.2.2
+PySAM version  7.0.0
+PV_ICE version  0.4.3
+</pre></div>
+</div>
+</div>
+</div>
+<section id="residential-repowering-scenario">
+<h1>Residential Repowering Scenario<a class="headerlink" href="#residential-repowering-scenario" title="Link to this heading">#</a></h1>
+<p>-Original system operates for X years</p>
+<p>-Need for roof repair, other reason to take panels off roof in year X</p>
+<p>-Calculate financials (net present value, payback period) for reinstalling existing panels vs. repowering with new modules</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Step 1. Set up original system</span>
+<span class="c1">#Read in PySAM json</span>
+<span class="c1"># create a new instance of the Pvwattsv8 module</span>
+<span class="n">pv_model</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="s2">&quot;FlatPlatePVResidential&quot;</span><span class="p">)</span>
+<span class="n">fin_model</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
+<span class="c1">#Alternatively, use PVWatts</span>
+<span class="c1">#pv_model = PySAM.Pvwattsv8.new()</span>
+<span class="n">grid_model</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
+<span class="n">ur_model</span> <span class="o">=</span> <span class="n">ur</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
+
+<span class="c1">#User: input json files from SAM</span>
+<span class="c1"># json_file_folder = &quot;Repower_example&quot;</span>
+<span class="c1"># json_files = next(os.walk(json_file_folder))[2]</span>
+<span class="c1"># json_files.sort()</span>
+<span class="c1"># get the inputs from the JSON file</span>
+<span class="k">for</span> <span class="n">json_file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;PBL 2_Data&#39;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span> <span class="s1">&#39;PBL 2_Data/&#39;</span> <span class="o">+</span> <span class="n">json_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">pv_inputs</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span> <span class="n">f</span> <span class="p">)</span>
+    
+    <span class="c1"># iterate through the input key-value pairs and set the module inputs</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pv_inputs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s1">&#39;number_inputs&#39;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">pv_model</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">ur_model</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">grid_model</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">fin_model</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+                        <span class="k">except</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variable not found in modules:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+
+<span class="n">fin_model</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
+<span class="c1">#Alternatively, use PVWatts</span>
+<span class="c1">#pv_model = PySAM.Pvwattsv8.new()</span>
+<span class="n">grid_model</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
+<span class="n">ur_model</span> <span class="o">=</span> <span class="n">ur</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable not found in modules:en_belpe
+Variable not found in modules:floor_area
+Variable not found in modules:Stories
+Variable not found in modules:YrBuilt
+Variable not found in modules:Retrofits
+Variable not found in modules:Occupants
+Variable not found in modules:Occ_Schedule
+Variable not found in modules:THeat
+Variable not found in modules:TCool
+Variable not found in modules:THeatSB
+Variable not found in modules:TCoolSB
+Variable not found in modules:T_Sched
+Variable not found in modules:en_heat
+Variable not found in modules:en_cool
+Variable not found in modules:en_fridge
+Variable not found in modules:en_range
+Variable not found in modules:en_dish
+Variable not found in modules:en_wash
+Variable not found in modules:en_dry
+Variable not found in modules:en_mels
+Variable not found in modules:Monthly_util
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Step 2. Download resource data</span>
+<span class="c1">#Read in weather data from SAM, or use NSRDB downloads in SAM format, or use dictionary of solar data</span>
+<span class="c1">#A. You already have a file</span>
+<span class="n">weather_file</span> <span class="o">=</span> <span class="s2">&quot;data/CO_weather_data.csv&quot;</span>
+<span class="n">pv_model</span><span class="o">.</span><span class="n">SolarResource</span><span class="o">.</span><span class="n">solar_resource_file</span> <span class="o">=</span> <span class="n">weather_file</span>
+
+<span class="c1">#B. solar_resource_data</span>
+<span class="c1"># weather_data = PySAM.ResourceTools.SAM_CSV_to_solar_data(weather_file)</span>
+<span class="c1"># solar_resource_data = {</span>
+<span class="c1">#         &#39;tz&#39;: tz, # timezone</span>
+<span class="c1">#         &#39;elev&#39;: elev, # elevation</span>
+<span class="c1">#         &#39;lat&#39;: lat, # latitude</span>
+<span class="c1">#         &#39;lon&#39;: lon, # longitude</span>
+<span class="c1">#         &#39;year&#39;: tuple(weather_data[0]), # year</span>
+<span class="c1">#         &#39;month&#39;: tuple(weather_data[1]), # month</span>
+<span class="c1">#         &#39;day&#39;: tuple(weather_data[2]), # day</span>
+<span class="c1">#         &#39;hour&#39;: tuple(weather_data[3]), # hour</span>
+<span class="c1">#         &#39;minute&#39;: tuple(weather_data[4]), # minute</span>
+<span class="c1">#         &#39;dn&#39;: tuple(weather_data[5]), # direct normal irradiance</span>
+<span class="c1">#         &#39;df&#39;: tuple(weather_data[6]), # diffuse irradiance</span>
+<span class="c1">#         &#39;gh&#39;: tuple(weather_data[7]), # global horizontal irradiance</span>
+<span class="c1">#         &#39;wspd&#39;: tuple(weather_data[8]), # windspeed</span>
+<span class="c1">#         &#39;tdry&#39;: tuple(weather_data[9]) # dry bulb temperature</span>
+<span class="c1">#         }</span>
+<span class="c1"># pv_model.unassign(&quot;solar_resource_file&quot;)</span>
+<span class="c1"># pv_model.SolarResource.solar_resource_data = solar_resource_data</span>
+
+<span class="c1">#C. Download from NSRDB</span>
+<span class="c1"># </span>
+<span class="c1"># --- Initialize Solar Resource Fetcher with minimum parameters ---</span>
+<span class="c1"># See function documentation for full parameter list</span>
+
+<span class="c1">#import geocoder</span>
+
+<span class="c1"># replace with key and email address from https://developer.nrel.gov/signup/</span>
+<span class="n">sam_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;NREL_API_KEY&#39;</span><span class="p">)</span>
+<span class="n">sam_email</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;NREL_API_EMAIL&#39;</span><span class="p">)</span>
+<span class="c1"># sam_api_key = nrel_developer_key</span>
+<span class="c1"># sam_email = sam@email.com</span>
+<span class="n">geocode_api_key</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># optional, may be required for geocoder</span>
+
+<span class="c1"># --- Location Coordinates ---</span>
+
+<span class="c1"># Set geocode to True to use geocoding service API</span>
+<span class="n">geocode</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">if</span> <span class="n">geocode</span><span class="p">:</span>
+    <span class="c1"># See https://geocoder.readthedocs.io/ for different geocoding services</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">geocoder</span><span class="o">.</span><span class="n">bing</span><span class="p">(</span><span class="s1">&#39;golden, co&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">geocode_api_key</span><span class="p">)</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">latlng</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">latlng</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">105.22</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="mf">39.75</span>
+<span class="n">nsrdbfetcher</span> <span class="o">=</span> <span class="n">tools</span><span class="o">.</span><span class="n">FetchResourceFiles</span><span class="p">(</span>
+                <span class="n">tech</span><span class="o">=</span><span class="s1">&#39;solar&#39;</span><span class="p">,</span>
+                <span class="n">nrel_api_key</span><span class="o">=</span><span class="n">sam_api_key</span><span class="p">,</span>
+                <span class="n">nrel_api_email</span><span class="o">=</span><span class="n">sam_email</span><span class="p">)</span>
+
+<span class="c1"># --- List of (lon, lat) tuples or Shapely points ---</span>
+<span class="n">lon_lats</span> <span class="o">=</span> <span class="p">[(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)]</span>
+<span class="n">nsrdbfetcher</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">lon_lats</span><span class="p">)</span>
+
+<span class="c1"># --- Get resource data file path ---</span>
+<span class="n">nsrdb_path_dict</span> <span class="o">=</span> <span class="n">nsrdbfetcher</span><span class="o">.</span><span class="n">resource_file_paths_dict</span>
+<span class="n">nsrdb_fp</span> <span class="o">=</span> <span class="n">nsrdb_path_dict</span><span class="p">[</span><span class="n">lon_lats</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="c1">#pv_model.SolarResource.solar_resource_file = nsrdb_fp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting data download for solar using 1 thread workers.
+Getting list of available NSRDB files for 39.75, -105.22.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error for 39.75, -105.22: {
+  &quot;error&quot;: {
+    &quot;code&quot;: &quot;API_KEY_INVALID&quot;,
+    &quot;message&quot;: &quot;An invalid api_key was supplied. Get one at https://developer.nrel.gov/signup/&quot;
+  }
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Step 3. Set decision point </span>
+<span class="c1">#Roof replacement year (years from system install), or year where decision is needed to be made between reinstall vs repower</span>
+<span class="n">decision_year</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">#years</span>
+
+<span class="c1">#Set module degradation from initial install to decision point</span>
+<span class="n">degradation_rate</span> <span class="o">=</span> <span class="n">pv_model</span><span class="o">.</span><span class="n">Lifetime</span><span class="o">.</span><span class="n">dc_degradation</span> <span class="c1">#sequence, variable length depending on SAM input, if flat rate then length=1</span>
+<span class="n">degradation_todate</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#initialize</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">degradation_rate</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">degradation_todate</span> <span class="o">=</span> <span class="n">degradation_rate</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#Use last element in array for most recent year, degradation rates are not cumulative</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">degradation_todate</span> <span class="o">=</span> <span class="n">degradation_rate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">decision_year</span> <span class="c1">#Only 1 value</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">degradation_todate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Reinstall case - Unknown number of remaining years of life</span>
+<span class="n">reinstall</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
+<span class="n">reinstall_financial</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">fin_model</span><span class="p">)</span>
+<span class="n">grid_model</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">reinstall_financial</span><span class="p">)</span>
+<span class="n">ur_model</span> <span class="o">=</span> <span class="n">ur</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">reinstall_financial</span><span class="p">)</span>
+<span class="n">repower</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
+<span class="n">repower_financial</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">fin_model</span><span class="p">)</span>
+
+<span class="n">remaining_years</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">reinstall_npv</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">reinstall_payback</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">reinstall</span><span class="o">.</span><span class="n">Losses</span><span class="o">.</span><span class="n">subarray1_nameplate_loss</span> <span class="o">=</span> <span class="n">degradation_todate</span> <span class="c1">#Set degradation calculation as a nameplate decrease in reinstalled module&#39;s power output</span>
+<span class="n">reinstall_system_capacity</span> <span class="o">=</span> <span class="n">reinstall</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">system_capacity</span> <span class="o">*</span> <span class="mi">1000</span> <span class="c1">#Wdc</span>
+<span class="n">reinstall_variable_cost</span> <span class="o">=</span> <span class="mf">0.43</span> <span class="c1">#$/Wdc</span>
+<span class="n">reinstall_fixed_cost</span> <span class="o">=</span> <span class="mi">2400</span> <span class="c1">#$</span>
+<span class="n">reinstall_financial</span><span class="o">.</span><span class="n">SystemCosts</span><span class="o">.</span><span class="n">total_installed_cost</span> <span class="o">=</span> <span class="n">reinstall_variable_cost</span> <span class="o">*</span> <span class="n">reinstall_system_capacity</span>
+<span class="c1">#reinstall_financial.SystemCosts.total_installed_cost = reinstall_fixed_cost</span>
+<span class="k">for</span> <span class="n">lifetime</span> <span class="ow">in</span> <span class="n">remaining_years</span><span class="p">:</span>
+    <span class="n">reinstall</span><span class="o">.</span><span class="n">Lifetime</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">lifetime</span>
+    <span class="n">grid_model</span><span class="o">.</span><span class="n">Lifetime</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">lifetime</span>
+    <span class="n">ur_model</span><span class="o">.</span><span class="n">Lifetime</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">lifetime</span>
+    
+    
+    <span class="n">reinstall</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+    <span class="n">grid_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+    <span class="n">ur_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+    <span class="n">reinstall_financial</span><span class="o">.</span><span class="n">FinancialParameters</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">lifetime</span>
+    <span class="c1"># reinstall_financial.SystemOutput.degradation = [0]</span>
+    <span class="n">reinstall_financial</span><span class="o">.</span><span class="n">SystemOutput</span><span class="o">.</span><span class="n">gen</span> <span class="o">=</span> <span class="n">reinstall</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">gen</span>
+    <span class="n">reinstall_financial</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+    <span class="n">reinstall_npv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reinstall_financial</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">npv</span><span class="p">)</span> <span class="c1">#$</span>
+    <span class="n">reinstall_payback</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reinstall_financial</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">payback</span><span class="p">)</span> <span class="c1">#years</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">reinstall_npv</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reinstall_payback</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculation-mode-known-new-system-capacity-unknown-remaining-lifetime-for-existing-system">
+<h1>Calculation Mode: Known new system capacity, unknown remaining lifetime for existing system<a class="headerlink" href="#calculation-mode-known-new-system-capacity-unknown-remaining-lifetime-for-existing-system" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Repower case - Known system size, lifetime</span>
+<span class="n">grid_model</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">repower_financial</span><span class="p">)</span>
+<span class="n">ur_model</span> <span class="o">=</span> <span class="n">ur</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">repower_financial</span><span class="p">)</span>
+
+<span class="n">capacity_min</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1">#kW</span>
+<span class="n">capacity_max</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">#kW</span>
+
+<span class="n">new_system_analysis_period</span> <span class="o">=</span> <span class="mi">30</span> <span class="c1">#years</span>
+<span class="n">repower</span><span class="o">.</span><span class="n">Lifetime</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">new_system_analysis_period</span>
+<span class="n">grid_model</span><span class="o">.</span><span class="n">Lifetime</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">new_system_analysis_period</span>
+<span class="n">ur_model</span><span class="o">.</span><span class="n">Lifetime</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">new_system_analysis_period</span>
+
+<span class="n">new_system_capacity</span> <span class="o">=</span> <span class="mi">8</span> <span class="c1">#kWDC</span>
+<span class="n">repower_cost_per_wdc</span> <span class="o">=</span> <span class="mf">2.76</span> <span class="c1">#$/Wdc</span>
+<span class="n">repower_cost_flat</span> <span class="o">=</span> <span class="mi">10000</span> <span class="c1">#$</span>
+<span class="n">repower_npv</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">repower_payback</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1">#Select new module?</span>
+<span class="n">mod_dict</span> <span class="o">=</span> <span class="n">PySAM</span><span class="o">.</span><span class="n">Pvsamv1Tools</span><span class="o">.</span><span class="n">set_cec_module_library_selection</span><span class="p">(</span><span class="n">repower</span><span class="p">,</span> <span class="s2">&quot;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mod_dict</span><span class="p">)</span>
+
+<span class="n">n_strings</span><span class="p">,</span> <span class="n">n_combiners</span><span class="p">,</span> <span class="n">n_inverters</span><span class="p">,</span> <span class="n">calculated_system_capacity</span> <span class="o">=</span> <span class="n">pvtools</span><span class="o">.</span><span class="n">size_electrical_parameters</span><span class="p">(</span><span class="n">repower</span><span class="p">,</span> <span class="n">new_system_capacity</span><span class="p">,</span> <span class="mf">1.06</span><span class="p">)</span>
+
+<span class="n">repower</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="n">grid_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="n">ur_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="n">repower_financial</span><span class="o">.</span><span class="n">SystemOutput</span><span class="o">.</span><span class="n">gen</span> <span class="o">=</span> <span class="n">repower</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">gen</span>
+<span class="n">repower_financial</span><span class="o">.</span><span class="n">SystemCosts</span><span class="o">.</span><span class="n">total_installed_cost</span> <span class="o">=</span> <span class="n">repower_cost_per_wdc</span> <span class="o">*</span> <span class="n">repower</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">system_capacity</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="c1">#ITC 30%</span>
+<span class="n">repower_financial</span><span class="o">.</span><span class="n">TaxCreditIncentives</span><span class="o">.</span><span class="n">itc_fed_percent</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">]</span>
+<span class="c1"># repower_financial.SystemCosts.total_installed_cost = repower_cost_flat</span>
+
+<span class="n">repower_financial</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="n">repower_npv</span> <span class="o">=</span> <span class="n">repower_financial</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">npv</span>
+<span class="n">repower_payback</span> <span class="o">=</span> <span class="n">repower_financial</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">payback</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This function does not set the bifaciality of a module based on the bifacial based on the lib_is_bifacial value. Please change cec_is_bifacial to 1 to make the module bifacial.
+{&#39;lib_manufacturer&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: &#39;Maxeon Solar Technologies Ltd.&#39;}, &#39;cec_material&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: &#39;Mono-c-Si&#39;}, &#39;lib_is_bifacial&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 0}, &#39;Unnamed: 4&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 400.359}, &#39;Unnamed: 5&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 377.7}, &#39;cec_area&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 1.9}, &#39;lib_length&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: nan}, &#39;lib_width&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: nan}, &#39;cec_n_s&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 112}, &#39;cec_i_sc_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 13.06}, &#39;cec_v_oc_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 40.6}, &#39;cec_i_mp_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 11.81}, &#39;cec_v_mp_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 33.9}, &#39;cec_alpha_sc&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 0.005877}, &#39;cec_beta_oc&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: -0.095004}, &#39;cec_t_noct&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 46.0}, &#39;cec_a_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 1.43966}, &#39;cec_i_l_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 13.5369}, &#39;cec_i_o_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 6.86127e-12}, &#39;cec_r_s&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 0.174661}, &#39;cec_r_sh_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 28.9405}, &#39;cec_adjust&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 10.2786}, &#39;cec_gamma_pmp&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: -0.28}, &#39;Unnamed: 24&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: &#39;N&#39;}, &#39;Unnamed: 25&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: &#39;2023.12.17&#39;}, &#39;Unnamed: 26&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: &#39;11/14/2024&#39;}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Sample data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;x1&#39;</span><span class="p">:</span> <span class="n">remaining_years</span><span class="p">,</span>
+    <span class="s1">&#39;y1&#39;</span><span class="p">:</span> <span class="n">reinstall_npv</span><span class="p">,</span>
+    
+<span class="p">})</span>
+
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;y2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">repower_npv</span>
+
+<span class="c1"># Create the main plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;reinstall&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Original system remaining lifetime (years)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;NPV&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create the second x-axis</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;repower&#39;</span><span class="p">)</span>
+<span class="c1">#ax2.set_xbound(ax1.get_xbound())</span>
+<span class="c1">#plt.legend([&#39;reinstall&#39;, &#39;repower&#39;])</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\mprillim\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
+C:\Users\mprillim\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
+C:\Users\mprillim\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
+C:\Users\mprillim\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
+</pre></div>
+</div>
+<img alt="_images/a085f86826152d2543f6b1fc11e6cef7729883163c470ead6351bdf69d5fb12a.png" src="_images/a085f86826152d2543f6b1fc11e6cef7729883163c470ead6351bdf69d5fb12a.png" />
+</div>
+</div>
+</section>
+<section id="alternative-calculation-mode-unknown-new-system-capacity-known-remaining-lifetime-for-existing-system">
+<h1>Alternative calculation mode: Unknown new system capacity, known remaining lifetime for existing system<a class="headerlink" href="#alternative-calculation-mode-unknown-new-system-capacity-known-remaining-lifetime-for-existing-system" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Repower case</span>
+<span class="n">grid_model</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">repower_financial</span><span class="p">)</span>
+<span class="n">ur_model</span> <span class="o">=</span> <span class="n">ur</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">repower_financial</span><span class="p">)</span>
+
+<span class="n">capacity_min</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1">#kW</span>
+<span class="n">capacity_max</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">#kW</span>
+
+<span class="n">new_system_analysis_period</span> <span class="o">=</span> <span class="mi">30</span> <span class="c1">#years</span>
+<span class="n">repower</span><span class="o">.</span><span class="n">Lifetime</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">new_system_analysis_period</span>
+<span class="n">grid_model</span><span class="o">.</span><span class="n">Lifetime</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">new_system_analysis_period</span>
+<span class="n">ur_model</span><span class="o">.</span><span class="n">Lifetime</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">new_system_analysis_period</span>
+
+<span class="n">capacity_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">repower_cost_per_wdc</span> <span class="o">=</span> <span class="mf">0.80</span> <span class="c1">#$/Wdc</span>
+<span class="n">repower_cost_flat</span> <span class="o">=</span> <span class="mi">10000</span> <span class="c1">#$</span>
+<span class="n">repower_npv</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">repower_payback</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1">#Select new module?</span>
+<span class="n">mod_dict</span> <span class="o">=</span> <span class="n">PySAM</span><span class="o">.</span><span class="n">Pvsamv1Tools</span><span class="o">.</span><span class="n">set_cec_module_library_selection</span><span class="p">(</span><span class="n">repower</span><span class="p">,</span> <span class="s2">&quot;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mod_dict</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">sys_cap</span> <span class="ow">in</span> <span class="n">capacity_range</span><span class="p">:</span>
+    <span class="n">n_strings</span><span class="p">,</span> <span class="n">n_combiners</span><span class="p">,</span> <span class="n">n_inverters</span><span class="p">,</span> <span class="n">calculated_system_capacity</span> <span class="o">=</span> <span class="n">pvtools</span><span class="o">.</span><span class="n">size_electrical_parameters</span><span class="p">(</span><span class="n">repower</span><span class="p">,</span> <span class="n">sys_cap</span><span class="p">,</span> <span class="mf">1.06</span><span class="p">)</span>
+    
+    <span class="n">repower</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+    <span class="n">grid_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+    <span class="n">ur_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+    <span class="n">repower_financial</span><span class="o">.</span><span class="n">SystemOutput</span><span class="o">.</span><span class="n">gen</span> <span class="o">=</span> <span class="n">reinstall</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">gen</span>
+    <span class="n">repower_financial</span><span class="o">.</span><span class="n">SystemCosts</span><span class="o">.</span><span class="n">total_installed_cost</span> <span class="o">=</span> <span class="n">repower_cost_per_wdc</span> <span class="o">*</span> <span class="n">repower</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">system_capacity</span> <span class="o">*</span> <span class="mi">1000</span>
+    <span class="n">repower_financial</span><span class="o">.</span><span class="n">TaxCreditIncentives</span><span class="o">.</span><span class="n">itc_fed_percent</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">]</span>
+    <span class="c1"># repower_financial.SystemCosts.total_installed_cost = repower_cost_flat</span>
+
+    <span class="n">repower_financial</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+    <span class="n">repower_npv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">repower_financial</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">npv</span><span class="p">)</span>
+    <span class="n">repower_payback</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">repower_financial</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">payback</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This function does not set the bifaciality of a module based on the bifacial based on the lib_is_bifacial value. Please change cec_is_bifacial to 1 to make the module bifacial.
+{&#39;lib_manufacturer&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: &#39;Maxeon Solar Technologies Ltd.&#39;}, &#39;cec_material&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: &#39;Mono-c-Si&#39;}, &#39;lib_is_bifacial&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 0}, &#39;Unnamed: 4&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 400.359}, &#39;Unnamed: 5&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 377.7}, &#39;cec_area&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 1.9}, &#39;lib_length&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: nan}, &#39;lib_width&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: nan}, &#39;cec_n_s&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 112}, &#39;cec_i_sc_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 13.06}, &#39;cec_v_oc_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 40.6}, &#39;cec_i_mp_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 11.81}, &#39;cec_v_mp_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 33.9}, &#39;cec_alpha_sc&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 0.005877}, &#39;cec_beta_oc&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: -0.095004}, &#39;cec_t_noct&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 46.0}, &#39;cec_a_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 1.43966}, &#39;cec_i_l_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 13.5369}, &#39;cec_i_o_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 6.86127e-12}, &#39;cec_r_s&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 0.174661}, &#39;cec_r_sh_ref&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 28.9405}, &#39;cec_adjust&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: 10.2786}, &#39;cec_gamma_pmp&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: -0.28}, &#39;Unnamed: 24&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: &#39;N&#39;}, &#39;Unnamed: 25&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: &#39;2023.12.17&#39;}, &#39;Unnamed: 26&#39;: {&#39;Maxeon Solar Technologies Ltd. SPR-MAX3-400-COM-R&#39;: &#39;11/14/2024&#39;}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Reinstall case - Known number of remaining years of life</span>
+<span class="n">reinstall</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
+<span class="n">reinstall_financial</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">fin_model</span><span class="p">)</span>
+<span class="n">grid_model</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">reinstall_financial</span><span class="p">)</span>
+<span class="n">ur_model</span> <span class="o">=</span> <span class="n">ur</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">reinstall_financial</span><span class="p">)</span>
+<span class="n">repower</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
+<span class="n">repower_financial</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">fin_model</span><span class="p">)</span>
+
+<span class="n">lifetime</span> <span class="o">=</span> <span class="mi">19</span> <span class="c1">#years, user input for years of remaining life</span>
+<span class="n">reinstall_npv</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">reinstall_payback</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">reinstall</span><span class="o">.</span><span class="n">Losses</span><span class="o">.</span><span class="n">subarray1_nameplate_loss</span> <span class="o">=</span> <span class="n">degradation_todate</span>
+<span class="n">reinstall_system_capacity</span> <span class="o">=</span> <span class="n">reinstall</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">system_capacity</span> <span class="o">*</span> <span class="mi">1000</span> <span class="c1">#Wdc</span>
+<span class="n">reinstall_variable_cost</span> <span class="o">=</span> <span class="mf">0.30</span> <span class="c1">#$/Wdc</span>
+<span class="n">reinstall_fixed_cost</span> <span class="o">=</span> <span class="mi">2400</span> <span class="c1">#$</span>
+<span class="n">reinstall_financial</span><span class="o">.</span><span class="n">SystemCosts</span><span class="o">.</span><span class="n">total_installed_cost</span> <span class="o">=</span> <span class="n">reinstall_variable_cost</span> <span class="o">*</span> <span class="n">reinstall_system_capacity</span>
+<span class="c1">#reinstall_financial.SystemCosts.total_installed_cost = reinstall_fixed_cost</span>
+
+<span class="n">reinstall</span><span class="o">.</span><span class="n">Lifetime</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">lifetime</span>
+<span class="n">grid_model</span><span class="o">.</span><span class="n">Lifetime</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">lifetime</span>
+<span class="n">ur_model</span><span class="o">.</span><span class="n">Lifetime</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">lifetime</span>
+
+
+<span class="n">reinstall</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="n">grid_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="n">ur_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="n">reinstall_financial</span><span class="o">.</span><span class="n">FinancialParameters</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">lifetime</span>
+<span class="n">reinstall_financial</span><span class="o">.</span><span class="n">SystemOutput</span><span class="o">.</span><span class="n">degradation</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">reinstall_financial</span><span class="o">.</span><span class="n">SystemOutput</span><span class="o">.</span><span class="n">gen</span> <span class="o">=</span> <span class="n">reinstall</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">gen</span>
+<span class="n">reinstall_financial</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="n">reinstall_npv</span> <span class="o">=</span> <span class="n">reinstall_financial</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">npv</span> <span class="c1">#$</span>
+<span class="n">reinstall_payback</span> <span class="o">=</span> <span class="n">reinstall_financial</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">payback</span> <span class="c1">#years</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">reinstall_npv</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reinstall_payback</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12487.87238236879
+1.6965513481742267
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Sample data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;x1&#39;</span><span class="p">:</span> <span class="n">capacity_range</span><span class="p">,</span>
+    <span class="s1">&#39;y1&#39;</span><span class="p">:</span> <span class="n">repower_npv</span><span class="p">,</span>
+    
+<span class="p">})</span>
+
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;y2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reinstall_npv</span>
+
+<span class="c1"># Create the main plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;reinstall&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;New system size (kW)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;NPV&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create the second x-axis</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;repower&#39;</span><span class="p">)</span>
+<span class="c1">#ax2.set_xbound(ax1.get_xbound())</span>
+<span class="c1">#plt.legend([&#39;repower&#39;, &#39;reinstall&#39;])</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\mprillim\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
+C:\Users\mprillim\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
+C:\Users\mprillim\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
+C:\Users\mprillim\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
+</pre></div>
+</div>
+<img alt="_images/89efd40664dc6092d22c4c7f53040d147251aff8c9808168fad327e3ad9d43a3.png" src="_images/89efd40664dc6092d22c4c7f53040d147251aff8c9808168fad327e3ad9d43a3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Make decision on repower vs install, run PV_ICE</span>
+<span class="kn">import</span> <span class="nn">PV_ICE</span> <span class="k">as</span> <span class="nn">pvice</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Second life for free case?</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "PV-Tutorials/2025_PVPMC_PV_Repowering",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="PBL%201%20-%20Repowering%20a%20Commercial%20Site.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">C&amp;I Case Study</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="PBL%203%20-%202nd%20Life%20Resi.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Residential Repowering Scenario</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Residential Repowering Scenario</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-mode-known-new-system-capacity-unknown-remaining-lifetime-for-existing-system">Calculation Mode: Known new system capacity, unknown remaining lifetime for existing system</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-calculation-mode-unknown-new-system-capacity-known-remaining-lifetime-for-existing-system">Alternative calculation mode: Unknown new system capacity, known remaining lifetime for existing system</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Heather Mirletz, Silvana Ovaitt
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
