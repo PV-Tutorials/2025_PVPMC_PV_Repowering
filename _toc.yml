@@ -2,7 +2,9 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: Tutorial 0 - Overview
+root: Overview
 chapters:
 - file: PBL 1 - Repowering a Commercial Site 
-- file: PBL 2 - From the 2ndary recipient perspective
+- file: PBL 2 - Residential Repower
+- file: PBL 3 - 2nd Life Resi
+- file: PBL 4 - 2nd Life Owner School
