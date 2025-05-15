@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2025 Solar PV and PVlib Tutorial &#8212; 2025 PVPMC PV Repowering Tutorial</title>
+    <title>2025 PVPMC Repowering Tutorial &#8212; 2025 PVPMC PV Repowering Tutorial</title>
   
   
   
@@ -355,7 +355,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>2025 Solar PV and PVlib Tutorial</h1>
+    <h1>2025 PVPMC Repowering Tutorial</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -365,10 +365,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-1-hr">Section 1: 1 hr</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-1-hr">Section 2: 1 hr</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-tutorials">Appendix Tutorials:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-will-need-for-the-tutorial-during-the-live-session-february-10-and-12-2025">What you will need for the tutorial during the live session (February 10 and 12, 2025)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pbl-1-15-min">PBL 1: 15 min</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pbl-2-4">PBL 2-4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-will-need-for-the-tutorial-during-the-live-session-may-15-2025">What you will need for the tutorial during the live session (May 15, 2025)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial-setup">Tutorial Setup</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colaboratory">Google Colaboratory</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-requirements">Installing Requirements</a></li>
@@ -392,52 +391,44 @@
                 <article class="bd-article">
                   
   <p><img alt="tutorialpromo" src="_images/tutorial_banner.PNG" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="solar-pv-and-pvlib-tutorial">
-<h1>2025 Solar PV and PVlib Tutorial<a class="headerlink" href="#solar-pv-and-pvlib-tutorial" title="Link to this heading">#</a></h1>
-<p>Welcome! The goal of this tutorial is to introduce studnets from ECE 484/584 Photovoltaics course to open-source modeling of PV systems and their production.
-The tutorial is divided into 3 sections:</p>
-<section id="section-1-1-hr">
-<h2>Section 1: 1 hr<a class="headerlink" href="#section-1-1-hr" title="Link to this heading">#</a></h2>
-<p>This section will introduce the tutorial facilitator, the Jupyter and Google-Collab platform, and python. Then we will proceed to a working example.
-The working example will have you use an APIs to download weather data, and use this to model sun position and hten irradiance at surface of a module (POA).
-We will wrap up with modeling module’s temperature.
-This is covered by tutorials 0 - 2.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="pvpmc-repowering-tutorial">
+<h1>2025 PVPMC Repowering Tutorial<a class="headerlink" href="#pvpmc-repowering-tutorial" title="Link to this heading">#</a></h1>
+<p>Welcome! The goal of this tutorial is to introduce the concepts and modeling principles for evaluating lifecycle decisions such as repowering on aging PV Systems.</p>
+<p>The tutorial is divided into various Problem Based journals. During PVPMC 2025, Journal 1 will be covered in its totality.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://colab.research.google.com/github/PV-Tutorials/2025_pvlib_UNM/blob/main/Tutorial%200%20-%20Overview.ipynb"><strong>Tutorial 0</strong>: Overview</a></p></li>
-<li><p><a class="reference external" href="https://colab.research.google.com/github/PV-Tutorials/2025_pvlib_UNM/blob/main/Tutorial%201%20-%20TMY%20Weather%20Data.ipynb"><strong>Tutorial 1</strong>: TMY Weather Data</a></p></li>
-<li><p><a class="reference external" href="https://colab.research.google.com/github/PV-Tutorials/2025_pvlib_UNM/blob/main/Tutorial%202%20-%20POA%20Irradiance%20and%20Module%20Temperature.ipynb"><strong>Tutorial 2</strong>: POA Irradiance and Module Temperature</a></p></li>
+<li><p><a class="reference external" href="https://colab.research.google.com/github/PV-Tutorials/2025_PVPMC_PV_Repowering/blob/main/Overview.ipynb"><strong>New to Jupyter Notebooks?</strong>: Do our Overview Tutorial</a></p></li>
+</ul>
+<section id="pbl-1-15-min">
+<h2>PBL 1: 15 min<a class="headerlink" href="#pbl-1-15-min" title="Link to this heading">#</a></h2>
+<p>This section will introduce the evaluation of decommisioning, reinstalling, repowering with recycling or resell of a Commercial System.
+The working example will have you use SAM Jsons, assign weather data for different locations, go over setting and adjusting costs for all of this possilbe lifecylce choices.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://colab.research.google.com/github/PV-Tutorials/2025_PVPMC_PV_Repowering/blob/main/PBL%201%20-%20Repowering%20a%20Commercial%20Site.ipynb"><strong>Tutorial 1</strong>: Repowering a Commercial Site</a></p></li>
 </ul>
 </section>
-<section id="section-2-1-hr">
-<h2>Section 2: 1 hr<a class="headerlink" href="#section-2-1-hr" title="Link to this heading">#</a></h2>
-<p>This will be a problem based learning, where you will calculate either a) a pv module power output, or b) Comparison of weather data to clear-sky data by taking code from section 1, and adding new code from the documentation provided.
+<section id="pbl-2-4">
+<h2>PBL 2-4<a class="headerlink" href="#pbl-2-4" title="Link to this heading">#</a></h2>
+<p>This problem based learning follows
+, where you will calculate either a) a pv module power output, or b) Comparison of weather data to clear-sky data by taking code from section 1, and adding new code from the documentation provided.
 This section will be in small teams created during the session based on skill level. Facilitator will roam around supporting.
 This is covered by tutorial PBL 1.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://colab.research.google.com/github/PV-Tutorials/2025_pvlib_UNM/blob/main/PBL_Case%201.ipynb"><strong>Tutorial PBL - 1</strong>: Model power output of a module</a></p></li>
+<li><p><a class="reference external" href="https://colab.research.google.com/github/PV-Tutorials/2025_PVPMC_PV_Repowering/blob/main/PBL%202%20-%20Residential%20Repower.ipynb"><strong>Tutorial 21</strong>: Residential Repower</a></p></li>
+<li><p><a class="reference external" href="https://colab.research.google.com/github/PV-Tutorials/2025_PVPMC_PV_Repowering/blob/main/PBL%203%20-%202nd%20Life%20Resi.ipynb"><strong>Tutorial 3</strong>: 2nd Life Resi</a></p></li>
+<li><p><a class="reference external" href="https://colab.research.google.com/github/PV-Tutorials/2025_PVPMC_PV_Repowering/blob/main/PBL%204%20-%202nd%20Life%20Owner%20School.ipynb"><strong>Tutorial 4</strong>: 2nd Life Owner School</a></p></li>
 </ul>
-<p>We hope that at the end of this tutorial you will
--Have a basic understanding of python, how to run it in the online platform.
--Be able to identify and use source of weather data, even through a fancy API.
--Know how to code– in other words copy and paste, and read documentation– for four functions from Pvlib.
--Have enough knowledge to do the appendix tutorials on your own if you want to deepen your knowledge
--Have a clearer understanding of what pvlib does, and what other open source tools are there for you to use.</p>
-</section>
-<section id="appendix-tutorials">
-<h2>Appendix Tutorials:<a class="headerlink" href="#appendix-tutorials" title="Link to this heading">#</a></h2>
+<p>By the end of this tutorial, you should be able to:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://colab.research.google.com/github/PV-Tutorials/2025_pvlib_UNM/blob/main/Tutorial%20A%20-%20Model%20a%20Module's%20Performance.ipynb"><strong>Tutorial A</strong>: Model output power from a single module</a></p></li>
-<li><p><a class="reference external" href="https://colab.research.google.com/github/PV-Tutorials/2025_pvlib_UNM/blob/main/Tutorial%20B%20-%20Array%20Power.ipynb"><strong>Tutorial B</strong>: Combine modules to form strings, calculate inverter efficiency
-and total array output</a></p></li>
-<li><p><a class="reference external" href="https://colab.research.google.com/github/PV-Tutorials/2025_pvlib_UNM/blob/main/Tutorial%20C%20-%20Single%20Diode%20Model.ipynb"><strong>Tutorial C</strong>: Single diode model </a></p></li>
-<li><p><a class="reference external" href="https://colab.research.google.com/github/PV-Tutorials/2025_pvlib_UNM/blob/main/Tutorial%20D%20-%20pvfree.ipynb"><strong>Tutorial D</strong>: Open-source tool: pvfree</a></p></li>
-<li><p><a class="reference external" href="https://colab.research.google.com/github/PV-Tutorials/2025_pvlib_UNM/blob/main/Tutorial%20E%20-%20PySAM%20Financial%20Model.ipynb"><strong>Tutorial E</strong>: Using the powerful due-diligence software SAM via pySAM</a></p></li>
-<li><p><strong>Tutorials Appendices</strong>: More tutorials on a variety of fun topics</p></li>
+<li><p>Understand the basics of Python and how to run code using an online platform (e.g., Jupyter or Google Colab)</p></li>
+<li><p>Load and execute sample code using PySAM for PV system modeling</p></li>
+<li><p>Configure and load your own weather data — either locally or via the NSRDB API</p></li>
+<li><p>Navigate Python code: copy, paste, edit, and most importantly, read the documentation :smiley:</p></li>
+<li><p>Recognize key parameters relevant to lifecycle decisions in repowering scenarios (e.g., degradation, capacity gain, costs)</p></li>
 </ul>
 </section>
-<section id="what-you-will-need-for-the-tutorial-during-the-live-session-february-10-and-12-2025">
-<h2>What you will need for the tutorial during the live session (February 10 and 12, 2025)<a class="headerlink" href="#what-you-will-need-for-the-tutorial-during-the-live-session-february-10-and-12-2025" title="Link to this heading">#</a></h2>
-<p>During this tutorials, we hope you get to play with the code. A laptop is ideal, but we have had students doing them through their phones or tablets, or joining in with a peer.
+<section id="what-you-will-need-for-the-tutorial-during-the-live-session-may-15-2025">
+<h2>What you will need for the tutorial during the live session (May 15, 2025)<a class="headerlink" href="#what-you-will-need-for-the-tutorial-during-the-live-session-may-15-2025" title="Link to this heading">#</a></h2>
+<p>During this tutorials, we hope you get to play with the code. A laptop is ideal, but we have had attendees follow through their phones or tablets, or joining in with a peer.
 You will NOT have to install anything on your computer if you don’t want, as we will be running the tutorial in Google Collab. However, you WILL need to be logged-in to a google account to run the tutorials online.
 Alternatively, you can install on your computer (instructions below).</p>
 </section>
@@ -451,16 +442,16 @@ use <a class="reference external" href="https://colab.research.google.com/">Goog
 <h3>Google Colaboratory<a class="headerlink" href="#google-colaboratory" title="Link to this heading">#</a></h3>
 <p>To run these tutorials in <a class="reference external" href="https://colab.research.google.com/">Google Colaboratory</a>
 you can click the button below:</p>
-<a target="_blank" href="https://colab.research.google.com/github/PV-Tutorials/2025_pvlib_UNM/blob/main/Tutorial%200%20-%20Overview.ipynb">
+<a target="_blank" href="https://colab.research.google.com/github/PV-Tutorials/2025_PVPMC_PV_Repowering/blob/main/Overview.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 <p>You can also select Colaboratory from the launch icon at the top of each tutorial
-in the <a class="reference external" href="https://pvsc-tutorials.github.io/2025_pvlib_UNM/index.html">Jupyter book</a>.</p>
+in the <a class="reference external" href="https://pvsc-tutorials.github.io/2025_PVPMC_PV_Repowering/index.html">Jupyter book</a>.</p>
 <section id="installing-requirements">
 <h4>Installing Requirements<a class="headerlink" href="#installing-requirements" title="Link to this heading">#</a></h4>
 <p>When using Google Colaboratory, you must uncomment the first cell that installs
 the tutorial requirements.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!pip install -r https://raw.githubusercontent.com/PVSC-Tutorials/2025_pvlib_UNM/main/requirements.txt
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!pip install -r https://raw.githubusercontent.com/PVSC-Tutorials/2025_PVPMC_PV_Repowering/main/requirements.txt
 </pre></div>
 </div>
 </section>
@@ -469,14 +460,14 @@ the tutorial requirements.</p>
 <h3>Jupyter Books<a class="headerlink" href="#jupyter-books" title="Link to this heading">#</a></h3>
 <p>The full tutorial is hosted as a <a class="reference external" href="https://jupyterbook.org/intro.html">Jupyter book</a>.
 This book has navigation, search, and can be used to launch each book in Colaboratory.</p>
-<p><a class="reference external" href="https://PV-Tutorials.github.io/2025_pvlib_UNM/index.html"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></a></p>
+<p><a class="reference external" href="https://PV-Tutorials.github.io/2025_PVPMC_PV_Repowering/index.html"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></a></p>
 </section>
 <section id="my-binder">
 <h3>My Binder<a class="headerlink" href="#my-binder" title="Link to this heading">#</a></h3>
 <p>The tutorials will remain available on GitHub, and you can run
 the tutorial anytime in <a class="reference external" href="https://mybinder.org">Binder</a> by clicking the
 following link:</p>
-<p><a class="reference external" href="https://mybinder.org/v2/gh/PV-Tutorials/2025_pvlib_UNM/main"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/PV-Tutorials/2025_PVPMC_PV_Repowering/main"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
 </section>
 <section id="locally">
 <h3>Locally<a class="headerlink" href="#locally" title="Link to this heading">#</a></h3>
@@ -486,7 +477,7 @@ steps:</p>
 <ol class="arabic">
 <li><p>Install <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>.</p></li>
 <li><p>Clone the repository:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">PV</span><span class="o">-</span><span class="n">Tutorials</span><span class="o">/</span><span class="mi">2025</span><span class="n">_pvlib_UNM</span><span class="o">.</span><span class="n">git</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">PV</span><span class="o">-</span><span class="n">Tutorials</span><span class="o">/</span><span class="mi">2025</span><span class="n">_PVPMC_PV_Repowering</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
 </li>
@@ -503,7 +494,7 @@ this tutorial. To install them using conda run:</p>
 </pre></div>
 </div>
 </li>
-<li><p>Use the file explorer in Jupyter lab to browse to <code class="docutils literal notranslate"><span class="pre">2025_pvlib_UNM</span></code>
+<li><p>Use the file explorer in Jupyter lab to browse to <code class="docutils literal notranslate"><span class="pre">2025_PVPMC_PV_Repowering</span></code>
 and start the first Tutorial.</p></li>
 </ol>
 </section>
@@ -561,10 +552,9 @@ and start the first Tutorial.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-1-hr">Section 1: 1 hr</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-1-hr">Section 2: 1 hr</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-tutorials">Appendix Tutorials:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-will-need-for-the-tutorial-during-the-live-session-february-10-and-12-2025">What you will need for the tutorial during the live session (February 10 and 12, 2025)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pbl-1-15-min">PBL 1: 15 min</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pbl-2-4">PBL 2-4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-will-need-for-the-tutorial-during-the-live-session-may-15-2025">What you will need for the tutorial during the live session (May 15, 2025)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial-setup">Tutorial Setup</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colaboratory">Google Colaboratory</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-requirements">Installing Requirements</a></li>
