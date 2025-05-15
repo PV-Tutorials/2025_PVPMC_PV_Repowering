@@ -37,7 +37,7 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['#Reinstall case - Unknown number of remaining years of life', 'reinstall = pv.from_existing(pv_model)', 'reinstall_financial = res.from_existing(fin_model)', 'grid_model = grid.from_existing(reinstall_financial)', 'ur_model = ur.from_existing(reinstall_financial)']
+['reinstall = pv.from_existing(pv_model)', 'reinstall_financial = res.from_existing(fin_model)', 'grid_model = grid.from_existing(reinstall_financial)', 'ur_model = ur.from_existing(reinstall_financial)', 'repower = pv.from_existing(pv_model)']
 ...
 ['    reinstall_npv.append(reinstall_financial.Outputs.npv) #$', '    reinstall_payback.append(reinstall_financial.Outputs.payback) #years', '', 'print(reinstall_npv)', 'print(reinstall_payback)']
 -------------------

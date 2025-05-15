@@ -419,18 +419,23 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-imports">0. Python Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-base-case">1. Set up base case</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-sam-json-files">Load SAM Json files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-resource-data">Download resource data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-resource-data">Assign resource data</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrics-for-evaluation">Metrics for evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-info-decommissioning-case">System Info: Decommissioning Case</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-decommissioning-case">1. Setup Decommissioning Case</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-decommissioning-cost">Calculate Decommissioning Cost</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-recycling-cost">Calculate Recycling Cost</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-decomissioning-and-recycling-costs-to-npv-and-update-payback-period">Assign Decomissioning and Recycling costs to NPV and update Payback Period</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-reinstall-case">2. Setup Reinstall case</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-repower-scrap-case">3. Setup Repower + scrap case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-repower-w-eol-recycling-case">3. Setup Repower w EoL Recycling case</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chose-new-module-and-system-capacity">Chose new Module and System Capacity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-repower-and-recycling-costs">Calculating Repower and Recycling Costs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incentives">Incentives!</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-repower-resell-case">4. Setup Repower + resell case</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-cases">Comparison of Cases</a></li>
 </ul>
@@ -541,16 +546,22 @@ PV_ICE version  0.4.3
 </div>
 </div>
 </section>
-<section id="download-resource-data">
-<h3>Download resource data<a class="headerlink" href="#download-resource-data" title="Link to this heading">#</a></h3>
+<section id="assign-resource-data">
+<h3>Assign resource data<a class="headerlink" href="#assign-resource-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read in weather data from SAM, or use NSRDB downloads in SAM format, or use dictionary of solar data</span>
 <span class="c1">#A. You already have a file</span>
 <span class="n">weather_file</span> <span class="o">=</span> <span class="s2">&quot;data/CA_weather_data.csv&quot;</span>
 <span class="n">pv_model</span><span class="o">.</span><span class="n">SolarResource</span><span class="o">.</span><span class="n">solar_resource_file</span> <span class="o">=</span> <span class="n">weather_file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ALTERNATIVE METHOD TO LOAD FROM A CSV</span>
 
-<span class="c1">#B. solar_resource_data</span>
 <span class="c1"># weather_data = PySAM.ResourceTools.SAM_CSV_to_solar_data(weather_file)</span>
 <span class="c1"># solar_resource_data = {</span>
 <span class="c1">#         &#39;tz&#39;: tz, # timezone</span>
@@ -570,60 +581,55 @@ PV_ICE version  0.4.3
 <span class="c1">#         }</span>
 <span class="c1"># pv_model.unassign(&quot;solar_resource_file&quot;)</span>
 <span class="c1"># pv_model.SolarResource.solar_resource_data = solar_resource_data</span>
-
-<span class="c1">#C. Download from NSRDB</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ALTERNATIVE ALTERNATIVE METHOD BY Download from NSRDB</span>
 <span class="c1"># </span>
 <span class="c1"># --- Initialize Solar Resource Fetcher with minimum parameters ---</span>
 <span class="c1"># See function documentation for full parameter list</span>
 
-<span class="c1">#import geocoder</span>
+<span class="n">NSRDB_download</span> <span class="o">=</span> <span class="kc">False</span>
 
-<span class="c1"># replace with key and email address from https://developer.nrel.gov/signup/</span>
-<span class="n">sam_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;NREL_API_KEY&#39;</span><span class="p">)</span>
-<span class="n">sam_email</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;NREL_API_EMAIL&#39;</span><span class="p">)</span>
-<span class="c1"># sam_api_key = nrel_developer_key</span>
-<span class="c1"># sam_email = sam@email.com</span>
-<span class="n">geocode_api_key</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># optional, may be required for geocoder</span>
-
-<span class="c1"># --- Location Coordinates ---</span>
-
-<span class="c1"># Set geocode to True to use geocoding service API</span>
-<span class="n">geocode</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="k">if</span> <span class="n">geocode</span><span class="p">:</span>
-    <span class="c1"># See https://geocoder.readthedocs.io/ for different geocoding services</span>
-    <span class="n">g</span> <span class="o">=</span> <span class="n">geocoder</span><span class="o">.</span><span class="n">bing</span><span class="p">(</span><span class="s1">&#39;golden, co&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">geocode_api_key</span><span class="p">)</span>
-    <span class="n">lon</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">latlng</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">lat</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">latlng</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">105.22</span>
-    <span class="n">lat</span> <span class="o">=</span> <span class="mf">39.75</span>
-<span class="n">nsrdbfetcher</span> <span class="o">=</span> <span class="n">tools</span><span class="o">.</span><span class="n">FetchResourceFiles</span><span class="p">(</span>
-                <span class="n">tech</span><span class="o">=</span><span class="s1">&#39;solar&#39;</span><span class="p">,</span>
-                <span class="n">nrel_api_key</span><span class="o">=</span><span class="n">sam_api_key</span><span class="p">,</span>
-                <span class="n">nrel_api_email</span><span class="o">=</span><span class="n">sam_email</span><span class="p">)</span>
-
-<span class="c1"># --- List of (lon, lat) tuples or Shapely points ---</span>
-<span class="n">lon_lats</span> <span class="o">=</span> <span class="p">[(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)]</span>
-<span class="n">nsrdbfetcher</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">lon_lats</span><span class="p">)</span>
-
-<span class="c1"># --- Get resource data file path ---</span>
-<span class="n">nsrdb_path_dict</span> <span class="o">=</span> <span class="n">nsrdbfetcher</span><span class="o">.</span><span class="n">resource_file_paths_dict</span>
-<span class="n">nsrdb_fp</span> <span class="o">=</span> <span class="n">nsrdb_path_dict</span><span class="p">[</span><span class="n">lon_lats</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-<span class="c1">#pv_model.SolarResource.solar_resource_file = nsrdb_fp</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting data download for solar using 1 thread workers.
-Getting list of available NSRDB files for 39.75, -105.22.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error for 39.75, -105.22: {
-  &quot;error&quot;: {
-    &quot;code&quot;: &quot;API_KEY_INVALID&quot;,
-    &quot;message&quot;: &quot;An invalid api_key was supplied. Get one at https://developer.nrel.gov/signup/&quot;
-  }
-}
+<span class="k">if</span> <span class="n">NSRDB_download</span><span class="p">:</span>
+    <span class="c1"># !pip install geocoder  # uncomment if in google collab tutorial or make sure it&#39;s on your environment.</span>
+    <span class="kn">import</span> <span class="nn">geocoder</span>
+    
+    <span class="c1"># replace with key and email address from https://developer.nrel.gov/signup/</span>
+    <span class="n">sam_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;NREL_API_KEY&#39;</span><span class="p">)</span>
+    <span class="n">sam_email</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;NREL_API_EMAIL&#39;</span><span class="p">)</span>
+    <span class="c1"># sam_api_key = nrel_developer_key</span>
+    <span class="c1"># sam_email = sam@email.com</span>
+    <span class="n">geocode_api_key</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># optional, may be required for geocoder</span>
+    
+    <span class="c1"># --- Location Coordinates ---</span>
+    
+    <span class="c1"># Set geocode to True to use geocoding service API</span>
+    <span class="n">geocode</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">geocode</span><span class="p">:</span>
+        <span class="c1"># See https://geocoder.readthedocs.io/ for different geocoding services</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">geocoder</span><span class="o">.</span><span class="n">bing</span><span class="p">(</span><span class="s1">&#39;golden, co&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">geocode_api_key</span><span class="p">)</span>
+        <span class="n">lon</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">latlng</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">lat</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">latlng</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">105.22</span>
+        <span class="n">lat</span> <span class="o">=</span> <span class="mf">39.75</span>
+    <span class="n">nsrdbfetcher</span> <span class="o">=</span> <span class="n">tools</span><span class="o">.</span><span class="n">FetchResourceFiles</span><span class="p">(</span>
+                    <span class="n">tech</span><span class="o">=</span><span class="s1">&#39;solar&#39;</span><span class="p">,</span>
+                    <span class="n">nrel_api_key</span><span class="o">=</span><span class="n">sam_api_key</span><span class="p">,</span>
+                    <span class="n">nrel_api_email</span><span class="o">=</span><span class="n">sam_email</span><span class="p">)</span>
+    
+    <span class="c1"># --- List of (lon, lat) tuples or Shapely points ---</span>
+    <span class="n">lon_lats</span> <span class="o">=</span> <span class="p">[(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)]</span>
+    <span class="n">nsrdbfetcher</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">lon_lats</span><span class="p">)</span>
+    
+    <span class="c1"># --- Get resource data file path ---</span>
+    <span class="n">nsrdb_path_dict</span> <span class="o">=</span> <span class="n">nsrdbfetcher</span><span class="o">.</span><span class="n">resource_file_paths_dict</span>
+    <span class="n">nsrdb_fp</span> <span class="o">=</span> <span class="n">nsrdb_path_dict</span><span class="p">[</span><span class="n">lon_lats</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="c1">#pv_model.SolarResource.solar_resource_file = nsrdb_fp</span>
 </pre></div>
 </div>
 </div>
@@ -632,7 +638,7 @@ Getting list of available NSRDB files for 39.75, -105.22.
 </section>
 <section id="metrics-for-evaluation">
 <h2>Metrics for evaluation<a class="headerlink" href="#metrics-for-evaluation" title="Link to this heading">#</a></h2>
-<p>We will save Net Present VAlue, and Payback Period for the four cases we’re modeling. We’re making a placeholder for that information in each run.</p>
+<p>We will save Net Present Value, and Payback Period for the four cases we’re modeling. We’re making a placeholder for that information in each run.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npv</span> <span class="o">=</span> <span class="p">[]</span>
@@ -641,11 +647,27 @@ Getting list of available NSRDB files for 39.75, -105.22.
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decommissioning_cost_CO</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="c1">#cents/W, assumed 0.25 for Colorado in</span>
+<span class="n">repower_cost</span> <span class="o">=</span> <span class="mf">2.21</span> <span class="c1">#$/Wdc</span>
+<span class="n">reinstall_cost</span> <span class="o">=</span> <span class="mf">0.58</span> <span class="c1">#cents/W (modified by user)</span>
+<span class="n">resell_value</span> <span class="o">=</span> <span class="mf">0.05</span> <span class="c1"># $/W</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">original_system_capacity</span> <span class="o">=</span> <span class="n">pv_model</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">system_capacity</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="system-info-decommissioning-case">
-<h2>System Info: Decommissioning Case<a class="headerlink" href="#system-info-decommissioning-case" title="Link to this heading">#</a></h2>
+<section id="setup-decommissioning-case">
+<h2>1. Setup Decommissioning Case<a class="headerlink" href="#setup-decommissioning-case" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Building Height: 1 story</p></li>
 <li><p>Mounting Technology: Racking scrap metal salvage value</p></li>
 <li><p>Module disposition: Recycle</p></li>
 <li><p>Remaining system lifetime: 0 years</p></li>
@@ -655,10 +677,11 @@ Getting list of available NSRDB files for 39.75, -105.22.
 </ul>
 <section id="calculate-decommissioning-cost">
 <h3>Calculate Decommissioning Cost<a class="headerlink" href="#calculate-decommissioning-cost" title="Link to this heading">#</a></h3>
+<p>Decommissioining cost included here is for CO example. To translate to other regions, we can use premiums from <a class="reference external" href="https://www.eia.gov/analysis/studies/powerplants/capitalcost/xls/capital-cost-assumption-tables.xlsx">https://www.eia.gov/analysis/studies/powerplants/capitalcost/xls/capital-cost-assumption-tables.xlsx</a></p>
+<p>For example, CA has a 10% premium in cost:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A. Decommissioning case</span>
-<span class="n">decommissioning_cost</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="mf">1.10</span> <span class="c1">#cents/W, assumed 0.25 for Colorado increased by 10% to California</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decommissioning_cost</span> <span class="o">=</span> <span class="n">decommissioning_cost_CO</span> <span class="o">*</span> <span class="mf">1.10</span> <span class="c1">#cents/W, assumed 0.25 for Colorado increased by 10% to California</span>
 <span class="n">decommissioning_cost_total</span> <span class="o">=</span> <span class="n">decommissioning_cost</span> <span class="o">*</span> <span class="n">pv_model</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">system_capacity</span> <span class="o">*</span> <span class="mi">1000</span>
 </pre></div>
 </div>
@@ -669,20 +692,14 @@ Getting list of available NSRDB files for 39.75, -105.22.
 <h3>Calculate Recycling Cost<a class="headerlink" href="#calculate-recycling-cost" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">16200</span><span class="o">/</span><span class="mi">950</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recycling_per_module</span> <span class="o">=</span> <span class="mi">17</span> <span class="c1"># $Dollars. </span>
+<span class="n">recycling_cost</span> <span class="o">=</span> <span class="n">recycling_per_module</span> <span class="o">*</span> <span class="p">(</span><span class="n">pv_model</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">subarray1_modules_per_string</span> <span class="o">*</span> <span class="n">pv_model</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">subarray1_nstrings</span><span class="p">)</span>
+<span class="n">recycling_cost</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17.05263157894737
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recycling_per_module</span> <span class="o">=</span> <span class="mi">17</span>
-<span class="n">recycling_cost</span> <span class="o">=</span> <span class="mi">16200</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27540.0
 </pre></div>
 </div>
 </div>
@@ -712,35 +729,48 @@ Getting list of available NSRDB files for 39.75, -105.22.
 <section id="setup-reinstall-case">
 <h2>2. Setup Reinstall case<a class="headerlink" href="#setup-reinstall-case" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Building Height: 1 story</p></li>
+<li><p>Module disposition: Keeping them</p></li>
 <li><p>Mounting Technology: Keep racking</p></li>
-<li><p>Module disposition: NA</p></li>
 <li><p>Remaining system lifetime: 12 years (user sets)</p></li>
 <li><p>Costs: 1.5x the decommissioning cost (estimated)</p></li>
-<li><p>Labor/Other: NA</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reinstall_cost</span> <span class="o">=</span> <span class="mf">0.58</span> <span class="c1">#cents/W (modified by user)</span>
-<span class="n">reinstall_cost_total</span> <span class="o">=</span> <span class="n">reinstall_cost</span> <span class="o">*</span> <span class="n">pv_model</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">system_capacity</span> <span class="o">*</span> <span class="mi">1000</span>
-
-<span class="c1">#System specs stay the same</span>
-<span class="n">pv_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
-<span class="n">grid_model</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
-<span class="n">ur_model</span> <span class="o">=</span> <span class="n">ur</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
-<span class="n">fin_model</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pv_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
 <span class="n">grid_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
 <span class="n">ur_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
 
+<span class="c1">#Make the new scenario copying the existing system specs that stay the same</span>
+<span class="n">grid_model</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
+<span class="n">ur_model</span> <span class="o">=</span> <span class="n">ur</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
+<span class="n">fin_model</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">pv_model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reinstall_cost_total</span> <span class="o">=</span> <span class="n">reinstall_cost</span> <span class="o">*</span> <span class="n">pv_model</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">system_capacity</span> <span class="o">*</span> <span class="mi">1000</span>
+
 <span class="c1">#Set system costs</span>
 <span class="n">fin_model</span><span class="o">.</span><span class="n">SystemCosts</span><span class="o">.</span><span class="n">total_installed_cost</span> <span class="o">=</span> <span class="n">reinstall_cost_total</span>
-<span class="c1">#Optional: modify loan terms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Optional: modify loan terms</span>
 <span class="c1"># fin_model.FinancialParameters.debt_fraction = 100 #%</span>
 <span class="c1"># fin_model.FinancialParameters.loan_term = 12 #years</span>
 <span class="c1"># fin_model.FinancialParameters.loan_rate = 7 #%/year</span>
-
-
-<span class="n">fin_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fin_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
 <span class="n">npv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fin_model</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">npv</span><span class="p">)</span>
 <span class="n">payback_period</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fin_model</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">payback</span><span class="p">)</span>
 </pre></div>
@@ -748,46 +778,88 @@ Getting list of available NSRDB files for 39.75, -105.22.
 </div>
 </div>
 </section>
-<section id="setup-repower-scrap-case">
-<h2>3. Setup Repower + scrap case<a class="headerlink" href="#setup-repower-scrap-case" title="Link to this heading">#</a></h2>
-<p>-Building Height: 1 story</p>
-<p>-Mounting Technology: Keep racking</p>
+<section id="setup-repower-w-eol-recycling-case">
+<h2>3. Setup Repower w EoL Recycling case<a class="headerlink" href="#setup-repower-w-eol-recycling-case" title="Link to this heading">#</a></h2>
 <p>-Module disposition: New module cost + Recycle</p>
+<p>-Mounting Technology: Keep racking</p>
 <p>-Remaining system lifetime: 30 years (user sets)</p>
 <p>-Costs: \<span class="math notranslate nohighlight">\(1/W to \\\)</span>2.50/W OR 10-30% adder above greenfield;
 Recycling: $10/panel</p>
 <p>-Labor/Other:To not renegotiate, new system size must not be &gt;10% or less than 1kW greaterA</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># C. Repower + scrap</span>
-<span class="n">repower</span> <span class="o">=</span> <span class="n">pv_model</span>
-<span class="n">mod_dict</span> <span class="o">=</span> <span class="n">pvtools</span><span class="o">.</span><span class="n">set_cec_module_library_selection</span><span class="p">(</span><span class="n">repower</span><span class="p">,</span> <span class="s2">&quot;Aptos Solar Technology LLC DNA-144-BF10-530W&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">repower</span> <span class="o">=</span> <span class="n">pv_model</span>
+<span class="n">grid_model</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">repower</span><span class="p">)</span>
+<span class="n">ur_model</span> <span class="o">=</span> <span class="n">ur</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">repower</span><span class="p">)</span>
+<span class="n">fin_model</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">repower</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="chose-new-module-and-system-capacity">
+<h3>Chose new Module and System Capacity<a class="headerlink" href="#chose-new-module-and-system-capacity" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_dict</span> <span class="o">=</span> <span class="n">pvtools</span><span class="o">.</span><span class="n">set_cec_module_library_selection</span><span class="p">(</span><span class="n">repower</span><span class="p">,</span> <span class="s2">&quot;Aptos Solar Technology LLC DNA-144-BF10-530W&quot;</span><span class="p">)</span>
 <span class="n">sys_cap</span> <span class="o">=</span> <span class="mi">504</span> <span class="c1">#kWDC</span>
 <span class="n">repower</span><span class="o">.</span><span class="n">Lifetime</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="mi">30</span> <span class="c1">#years</span>
 <span class="n">n_strings</span><span class="p">,</span> <span class="n">n_combiners</span><span class="p">,</span> <span class="n">n_inverters</span><span class="p">,</span> <span class="n">calculated_system_capacity</span> <span class="o">=</span> <span class="n">pvtools</span><span class="o">.</span><span class="n">size_electrical_parameters</span><span class="p">(</span><span class="n">repower</span><span class="p">,</span> <span class="n">sys_cap</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
 
-<span class="n">repower</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
-<span class="n">grid_model</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">repower</span><span class="p">)</span>
-<span class="n">ur_model</span> <span class="o">=</span> <span class="n">ur</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">repower</span><span class="p">)</span>
-<span class="n">fin_model</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">from_existing</span><span class="p">(</span><span class="n">repower</span><span class="p">)</span>
-
-<span class="n">grid_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
-<span class="n">ur_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
-
-<span class="n">repower_cost</span> <span class="o">=</span> <span class="mf">2.21</span> <span class="c1">#$/Wdc</span>
+<span class="c1">#The function above does not automatically set the bifaciality of a module based on the bifacial based on the lib_is_bifacial value. </span>
+<span class="c1"># Please change cec_is_bifacial to 1 to make the module bifacial.</span>
+<span class="n">bifacial_module</span><span class="p">,</span> <span class="o">=</span> <span class="n">mod_dict</span><span class="p">[</span><span class="s1">&#39;lib_is_bifacial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">bifacial_module</span><span class="p">:</span>
+    <span class="n">repower</span><span class="o">.</span><span class="n">CECPerformanceModelWithModuleDatabase</span><span class="o">.</span><span class="n">cec_is_bifacial</span> <span class="o">=</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This function does not set the bifaciality of a module based on the bifacial based on the lib_is_bifacial value. Please change cec_is_bifacial to 1 to make the module bifacial.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculating-repower-and-recycling-costs">
+<h3>Calculating Repower and Recycling Costs<a class="headerlink" href="#calculating-repower-and-recycling-costs" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">repower_cost</span> <span class="o">=</span> <span class="mf">2.21</span> <span class="c1">#$/Wdc</span>
 <span class="n">repower_cost_total</span> <span class="o">=</span> <span class="n">repower_cost</span> <span class="o">*</span> <span class="n">repower</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">system_capacity</span> <span class="o">*</span> <span class="mi">1000</span>
 <span class="n">recycle_cost</span> <span class="o">=</span> <span class="mi">16200</span>
 <span class="n">total_installed_cost</span> <span class="o">=</span> <span class="n">repower_cost_total</span> <span class="o">+</span> <span class="n">recycle_cost</span>
-
-<span class="c1">#Optional: modify loan terms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Optional: modify loan terms</span>
 <span class="c1"># fin_model.FinancialParameters.debt_fraction = 100 #%</span>
 <span class="c1"># fin_model.FinancialParameters.loan_term = 12 #years</span>
 <span class="c1"># fin_model.FinancialParameters.loan_rate = 7 #%/year</span>
-
-<span class="n">fin_model</span><span class="o">.</span><span class="n">TaxCreditIncentives</span><span class="o">.</span><span class="n">itc_fed_amount</span> <span class="o">=</span> <span class="p">[</span><span class="mi">291818</span><span class="p">]</span> <span class="c1">#30%, accounting for depreciation </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="incentives">
+<h3>Incentives!<a class="headerlink" href="#incentives" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fin_model</span><span class="o">.</span><span class="n">TaxCreditIncentives</span><span class="o">.</span><span class="n">itc_fed_amount</span> <span class="o">=</span> <span class="p">[</span><span class="mi">291818</span><span class="p">]</span> <span class="c1">#30%, accounting for depreciation </span>
 <span class="n">fin_model</span><span class="o">.</span><span class="n">SystemCosts</span><span class="o">.</span><span class="n">total_installed_cost</span> <span class="o">=</span> <span class="n">total_installed_cost</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">repower</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="n">grid_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="n">ur_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
 <span class="n">fin_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
-<span class="n">bill_savings</span> <span class="o">=</span> <span class="n">ur_model</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">savings_year1</span>
+<span class="c1">#bill_savings = ur_model.Outputs.savings_year1 # optional save for getting more details</span>
 <span class="n">npv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fin_model</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">npv</span><span class="p">)</span>
 <span class="n">payback_period</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fin_model</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">payback</span><span class="p">)</span>
 </pre></div>
@@ -795,34 +867,30 @@ Recycling: $10/panel</p>
 </div>
 </div>
 </section>
+</section>
 <section id="setup-repower-resell-case">
 <h2>4. Setup Repower + resell case<a class="headerlink" href="#setup-repower-resell-case" title="Link to this heading">#</a></h2>
-<p>-Building Height: 1 story</p>
-<p>-Mounting Technology: Keep racking</p>
 <p>-Module disposition: New module cost + Resell</p>
+<p>-Mounting Technology: Keep racking</p>
 <p>-Remaining system lifetime: 30 years (user sets)</p>
-<p>-Costs: \<span class="math notranslate nohighlight">\(1/W to \\\)</span>2.50/W OR 10-30% adder above greenfield;
-Resell: \$0.05-0.6/W (only if &gt;300W)</p>
-<p>-Labor/Other:To not renegotiate, new system size must not be &gt;10% or less than 1kW greaterA</p>
+<p>-Costs: Repowering + recycling cost</p>
+<p>Considerations: :To not renegotiate, new system size must not bewithin &gt;10 of original capacity.A</p>
+<p><b> –&gt; Run after Repower + scrap case, then no need to re-run performance calculations, only financials
+</b></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># D. Repower + resell</span>
-<span class="c1">#Run after Repower + scrap case, then no need to re-run performance calculations, only financials</span>
-
-<span class="n">repower_cost</span> <span class="o">=</span> <span class="mf">2.21</span> <span class="c1">#$/Wdc</span>
-<span class="n">repower_cost_total</span> <span class="o">=</span> <span class="n">repower_cost</span> <span class="o">*</span> <span class="n">repower</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">system_capacity</span> <span class="o">*</span> <span class="mi">1000</span>
-<span class="n">recycle_cost</span> <span class="o">=</span> <span class="o">-</span><span class="mi">25210</span>
-<span class="n">total_installed_cost</span> <span class="o">=</span> <span class="n">repower_cost_total</span> <span class="o">+</span> <span class="n">recycle_cost</span>
-
-<span class="c1">#Optional: modify loan terms</span>
-<span class="c1"># fin_model.FinancialParameters.debt_fraction = 100 #%</span>
-<span class="c1"># fin_model.FinancialParameters.loan_term = 12 #years</span>
-<span class="c1"># fin_model.FinancialParameters.loan_rate = 7 #%/year</span>
-
-<span class="n">fin_model</span><span class="o">.</span><span class="n">SystemCosts</span><span class="o">.</span><span class="n">total_installed_cost</span> <span class="o">=</span> <span class="n">total_installed_cost</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">repower_cost_total</span> <span class="o">=</span> <span class="n">repower_cost</span> <span class="o">*</span> <span class="n">repower</span><span class="o">.</span><span class="n">SystemDesign</span><span class="o">.</span><span class="n">system_capacity</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="n">reselling_gains</span> <span class="o">=</span> <span class="n">resell_value</span> <span class="o">*</span> <span class="n">original_system_capacity</span> <span class="o">*</span> <span class="mi">1000</span> 
+<span class="n">total_installed_cost</span> <span class="o">=</span> <span class="n">repower_cost_total</span> <span class="o">-</span> <span class="n">reselling_gains</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fin_model</span><span class="o">.</span><span class="n">SystemCosts</span><span class="o">.</span><span class="n">total_installed_cost</span> <span class="o">=</span> <span class="n">total_installed_cost</span>
 <span class="n">fin_model</span><span class="o">.</span><span class="n">TaxCreditIncentives</span><span class="o">.</span><span class="n">itc_fed_amount</span> <span class="o">=</span> <span class="p">[</span><span class="mi">291818</span><span class="p">]</span> <span class="c1">#30%, accounting for depreciation </span>
 <span class="n">fin_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
-<span class="n">bill_savings</span> <span class="o">=</span> <span class="n">ur_model</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">savings_year1</span>
 <span class="n">npv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fin_model</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">npv</span><span class="p">)</span>
 <span class="n">payback_period</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fin_model</span><span class="o">.</span><span class="n">Outputs</span><span class="o">.</span><span class="n">payback</span><span class="p">)</span>
 </pre></div>
@@ -840,10 +908,10 @@ Resell: \$0.05-0.6/W (only if &gt;300W)</p>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Decommission&quot;</span><span class="p">,</span> <span class="s2">&quot;Reinstall&quot;</span><span class="p">,</span> <span class="s2">&quot;Repower + scrap&quot;</span><span class="p">,</span> <span class="s2">&quot;Repower + resell&quot;</span><span class="p">]</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">labels</span><span class="p">,</span> <span class="n">npv</span><span class="p">,</span> <span class="n">payback_period</span><span class="p">])</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Decommission&quot;</span><span class="p">,</span> <span class="s2">&quot;Reinstall&quot;</span><span class="p">,</span> <span class="s2">&quot;Repower + scrap&quot;</span><span class="p">,</span> <span class="s2">&quot;Repower + resell&quot;</span><span class="p">]</span>
 <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="s2">&quot;npv&quot;</span><span class="p">,</span> <span class="s2">&quot;payback&quot;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
@@ -851,21 +919,17 @@ Resell: \$0.05-0.6/W (only if &gt;300W)</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  0              1         2
-0      Decommission   -154371.3795       NaN
+0      Decommission   -165711.3795       NaN
 1         Reinstall  547956.448951   2.87441
-2   Repower + scrap  607599.131649  7.808715
-3  Repower + resell    641042.9471  7.457562
+2   Repower + scrap   616218.78358  7.761185
+3  Repower + resell  662675.133737  7.276673
              labels            npv   payback
-0      Decommission   -154371.3795       NaN
+0      Decommission   -165711.3795       NaN
 1         Reinstall  547956.448951   2.87441
-2   Repower + scrap  607599.131649  7.808715
-3  Repower + resell    641042.9471  7.457562
+2   Repower + scrap   616218.78358  7.761185
+3  Repower + resell  662675.133737  7.276673
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;labels&#39;, ylabel=&#39;npv&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/50c688eae072fa867d700cc66b85dd8cf1ee861d43d5be5ffbf946f10fd9bd43.png" src="_images/50c688eae072fa867d700cc66b85dd8cf1ee861d43d5be5ffbf946f10fd9bd43.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -873,6 +937,12 @@ Resell: \$0.05-0.6/W (only if &gt;300W)</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;npv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;labels&#39;, ylabel=&#39;npv&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/20f3231cf9868628b674587deb0a96425ced2c669fe5d89999c67e529b81efc2.png" src="_images/20f3231cf9868628b674587deb0a96425ced2c669fe5d89999c67e529b81efc2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -885,7 +955,7 @@ Resell: \$0.05-0.6/W (only if &gt;300W)</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;labels&#39;, ylabel=&#39;payback&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/274f0788d8a646dba3438e1ac465d5f8dc606a91aa85c318671a4e98181a89db.png" src="_images/274f0788d8a646dba3438e1ac465d5f8dc606a91aa85c318671a4e98181a89db.png" />
+<img alt="_images/1d024ad80597b4a1008d058495ef5153a70e98bd2fae4a0d2fb15888e27ae68b.png" src="_images/1d024ad80597b4a1008d058495ef5153a70e98bd2fae4a0d2fb15888e27ae68b.png" />
 </div>
 </div>
 </section>
@@ -959,18 +1029,23 @@ Resell: \$0.05-0.6/W (only if &gt;300W)</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-imports">0. Python Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-base-case">1. Set up base case</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-sam-json-files">Load SAM Json files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-resource-data">Download resource data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-resource-data">Assign resource data</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrics-for-evaluation">Metrics for evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-info-decommissioning-case">System Info: Decommissioning Case</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-decommissioning-case">1. Setup Decommissioning Case</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-decommissioning-cost">Calculate Decommissioning Cost</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-recycling-cost">Calculate Recycling Cost</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-decomissioning-and-recycling-costs-to-npv-and-update-payback-period">Assign Decomissioning and Recycling costs to NPV and update Payback Period</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-reinstall-case">2. Setup Reinstall case</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-repower-scrap-case">3. Setup Repower + scrap case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-repower-w-eol-recycling-case">3. Setup Repower w EoL Recycling case</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chose-new-module-and-system-capacity">Chose new Module and System Capacity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-repower-and-recycling-costs">Calculating Repower and Recycling Costs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incentives">Incentives!</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-repower-resell-case">4. Setup Repower + resell case</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-cases">Comparison of Cases</a></li>
 </ul>

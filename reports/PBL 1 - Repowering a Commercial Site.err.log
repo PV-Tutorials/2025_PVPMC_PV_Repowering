@@ -37,8 +37,13 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['# C. Repower + scrap', 'repower = pv_model', 'mod_dict = pvtools.set_cec_module_library_selection(repower, "Aptos Solar Technology LLC DNA-144-BF10-530W")', 'sys_cap = 504 #kWDC', 'repower.Lifetime.analysis_period = 30 #years']
-...
-['fin_model.SystemCosts.total_installed_cost = total_installed_cost', 'fin_model.execute()', 'bill_savings = ur_model.Outputs.savings_year1', 'npv.append(fin_model.Outputs.npv)', 'payback_period.append(fin_model.Outputs.payback)']
+repower.execute()
+grid_model.execute()
+ur_model.execute()
+fin_model.execute()
+#bill_savings = ur_model.Outputs.savings_year1 # optional save for getting more details
+npv.append(fin_model.Outputs.npv)
+payback_period.append(fin_model.Outputs.payback)
+
 -------------------
 

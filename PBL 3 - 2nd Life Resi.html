@@ -414,8 +414,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#residential-repowering-scenario">Residential Repowering Scenario</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nd-life-case">2nd Life case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-residential-repowering-scenario">1. Create Residential Repowering Scenario</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-resource-data">Download resource data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-financials-for-a-2nd-life-user">2. Setting Financials for a 2nd life User</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-build-case">New Build Case</a></li>
 </ul>
 </li>
@@ -477,8 +480,8 @@ PV_ICE version  0.4.3
 </div>
 </div>
 </div>
-<section id="residential-repowering-scenario">
-<h2>Residential Repowering Scenario<a class="headerlink" href="#residential-repowering-scenario" title="Link to this heading">#</a></h2>
+<section id="create-residential-repowering-scenario">
+<h2>1. Create Residential Repowering Scenario<a class="headerlink" href="#create-residential-repowering-scenario" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Step 1. Set up original system</span>
@@ -551,94 +554,21 @@ Variable not found in modules:Monthly_util
 </div>
 </div>
 </div>
+<section id="download-resource-data">
+<h3>Download resource data<a class="headerlink" href="#download-resource-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Step 2. Download resource data</span>
-<span class="c1">#Read in weather data from SAM, or use NSRDB downloads in SAM format, or use dictionary of solar data</span>
-<span class="c1">#A. You already have a file</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read in weather data from SAM, or use NSRDB downloads in SAM format, or use dictionary of solar data</span>
 <span class="n">weather_file</span> <span class="o">=</span> <span class="s2">&quot;data/CO_weather_data.csv&quot;</span>
 <span class="n">pv_model</span><span class="o">.</span><span class="n">SolarResource</span><span class="o">.</span><span class="n">solar_resource_file</span> <span class="o">=</span> <span class="n">weather_file</span>
-
-<span class="c1">#B. solar_resource_data</span>
-<span class="c1"># weather_data = PySAM.ResourceTools.SAM_CSV_to_solar_data(weather_file)</span>
-<span class="c1"># solar_resource_data = {</span>
-<span class="c1">#         &#39;tz&#39;: tz, # timezone</span>
-<span class="c1">#         &#39;elev&#39;: elev, # elevation</span>
-<span class="c1">#         &#39;lat&#39;: lat, # latitude</span>
-<span class="c1">#         &#39;lon&#39;: lon, # longitude</span>
-<span class="c1">#         &#39;year&#39;: tuple(weather_data[0]), # year</span>
-<span class="c1">#         &#39;month&#39;: tuple(weather_data[1]), # month</span>
-<span class="c1">#         &#39;day&#39;: tuple(weather_data[2]), # day</span>
-<span class="c1">#         &#39;hour&#39;: tuple(weather_data[3]), # hour</span>
-<span class="c1">#         &#39;minute&#39;: tuple(weather_data[4]), # minute</span>
-<span class="c1">#         &#39;dn&#39;: tuple(weather_data[5]), # direct normal irradiance</span>
-<span class="c1">#         &#39;df&#39;: tuple(weather_data[6]), # diffuse irradiance</span>
-<span class="c1">#         &#39;gh&#39;: tuple(weather_data[7]), # global horizontal irradiance</span>
-<span class="c1">#         &#39;wspd&#39;: tuple(weather_data[8]), # windspeed</span>
-<span class="c1">#         &#39;tdry&#39;: tuple(weather_data[9]) # dry bulb temperature</span>
-<span class="c1">#         }</span>
-<span class="c1"># pv_model.unassign(&quot;solar_resource_file&quot;)</span>
-<span class="c1"># pv_model.SolarResource.solar_resource_data = solar_resource_data</span>
-
-<span class="c1">#C. Download from NSRDB</span>
-<span class="c1"># </span>
-<span class="c1"># --- Initialize Solar Resource Fetcher with minimum parameters ---</span>
-<span class="c1"># See function documentation for full parameter list</span>
-
-<span class="c1">#import geocoder</span>
-
-<span class="c1"># replace with key and email address from https://developer.nrel.gov/signup/</span>
-<span class="n">sam_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;NREL_API_KEY&#39;</span><span class="p">)</span>
-<span class="n">sam_email</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;NREL_API_EMAIL&#39;</span><span class="p">)</span>
-<span class="c1"># sam_api_key = nrel_developer_key</span>
-<span class="c1"># sam_email = sam@email.com</span>
-<span class="n">geocode_api_key</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># optional, may be required for geocoder</span>
-
-<span class="c1"># --- Location Coordinates ---</span>
-
-<span class="c1"># Set geocode to True to use geocoding service API</span>
-<span class="n">geocode</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="k">if</span> <span class="n">geocode</span><span class="p">:</span>
-    <span class="c1"># See https://geocoder.readthedocs.io/ for different geocoding services</span>
-    <span class="n">g</span> <span class="o">=</span> <span class="n">geocoder</span><span class="o">.</span><span class="n">bing</span><span class="p">(</span><span class="s1">&#39;golden, co&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">geocode_api_key</span><span class="p">)</span>
-    <span class="n">lon</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">latlng</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">lat</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">latlng</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">105.22</span>
-    <span class="n">lat</span> <span class="o">=</span> <span class="mf">39.75</span>
-<span class="n">nsrdbfetcher</span> <span class="o">=</span> <span class="n">tools</span><span class="o">.</span><span class="n">FetchResourceFiles</span><span class="p">(</span>
-                <span class="n">tech</span><span class="o">=</span><span class="s1">&#39;solar&#39;</span><span class="p">,</span>
-                <span class="n">nrel_api_key</span><span class="o">=</span><span class="n">sam_api_key</span><span class="p">,</span>
-                <span class="n">nrel_api_email</span><span class="o">=</span><span class="n">sam_email</span><span class="p">)</span>
-
-<span class="c1"># --- List of (lon, lat) tuples or Shapely points ---</span>
-<span class="n">lon_lats</span> <span class="o">=</span> <span class="p">[(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)]</span>
-<span class="n">nsrdbfetcher</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">lon_lats</span><span class="p">)</span>
-
-<span class="c1"># --- Get resource data file path ---</span>
-<span class="n">nsrdb_path_dict</span> <span class="o">=</span> <span class="n">nsrdbfetcher</span><span class="o">.</span><span class="n">resource_file_paths_dict</span>
-<span class="n">nsrdb_fp</span> <span class="o">=</span> <span class="n">nsrdb_path_dict</span><span class="p">[</span><span class="n">lon_lats</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-<span class="c1">#pv_model.SolarResource.solar_resource_file = nsrdb_fp</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting data download for solar using 1 thread workers.
-Getting list of available NSRDB files for 39.75, -105.22.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error for 39.75, -105.22: {
-  &quot;error&quot;: {
-    &quot;code&quot;: &quot;API_KEY_INVALID&quot;,
-    &quot;message&quot;: &quot;An invalid api_key was supplied. Get one at https://developer.nrel.gov/signup/&quot;
-  }
-}
 </pre></div>
 </div>
 </div>
 </div>
-<section id="nd-life-case">
-<h3>2nd Life case<a class="headerlink" href="#nd-life-case" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="setting-financials-for-a-2nd-life-user">
+<h2>2. Setting Financials for a 2nd life User<a class="headerlink" href="#setting-financials-for-a-2nd-life-user" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#second life - Unknown number of remaining years of life</span>
@@ -693,22 +623,7 @@ Getting list of available NSRDB files for 39.75, -105.22.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">36</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="n">secondlife_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">lifetime</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="n">secondlife</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">36</span> <span class="n">grid_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="n">ur_model</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="n">secondlife_financial</span><span class="o">.</span><span class="n">FinancialParameters</span><span class="o">.</span><span class="n">analysis_period</span> <span class="o">=</span> <span class="n">lifetime</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
 </div>
-</div>
-</div>
-</section>
 <section id="new-build-case">
 <h3>New Build Case<a class="headerlink" href="#new-build-case" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -865,8 +780,11 @@ Getting list of available NSRDB files for 39.75, -105.22.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#residential-repowering-scenario">Residential Repowering Scenario</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nd-life-case">2nd Life case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-residential-repowering-scenario">1. Create Residential Repowering Scenario</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-resource-data">Download resource data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-financials-for-a-2nd-life-user">2. Setting Financials for a 2nd life User</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-build-case">New Build Case</a></li>
 </ul>
 </li>
